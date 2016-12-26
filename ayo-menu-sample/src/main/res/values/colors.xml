@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="common_top_bar_blue">#9370DB</color>
+
+    <color name="text_menu1_normal">#94d8b6</color>
+    <color name="text_menu1_pressed">#6694d8b6</color>
+
+    <color name="text_menu2_normal">#9370DB</color>
+    <color name="text_menu2_pressed">#8260ca</color>
+
+    <color name="text_menu3_normal">#FFA6BB6E</color>
+    <color name="text_menu3_pressed">#FF95aa5d</color>
+
+</resources>

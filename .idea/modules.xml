@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/UI-Robot-Anim.iml" filepath="$PROJECT_DIR$/UI-Robot-Anim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ayo-core/ayo-core.iml" filepath="$PROJECT_DIR$/ayo-core/ayo-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ayo-menu-sample/ayo-menu-sample.iml" filepath="$PROJECT_DIR$/ayo-menu-sample/ayo-menu-sample.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.ayo.core">
+
+    <application android:allowBackup="true"
+        android:supportsRtl="true"
+>
+        <activity android:name=".permission.AskActivity"/>
+        <receiver android:name=".permission.Ask$Receiver">
+
+            <intent-filter>
+                <action android:name="org.ayo.permission.PERMISSION_RESULT_INTENT">
+                </action>
+            </intent-filter>
+
+        </receiver>
+
+    </application>
+
+</manifest>
