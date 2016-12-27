@@ -140,6 +140,7 @@ public abstract class YoYoAnimator {
         return this;
     }
 
+
     public YoYoAnimator setDuration(long duration) {
         mAnimatorSet.setDuration(duration);
         return this;

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:background="@drawable/round_rect"
+        android:padding="10dp"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/hello_world"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/test6"
+            android:scaleType="centerCrop"
+            />
+        <ImageView
+            android:id="@+id/hello_world2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/test5"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            />
+        <FrameLayout
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+            android:background="@drawable/round_rect"
+        />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/wrapper_ease"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@drawable/sel_menu1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/wrapper"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_ease"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:text="选择缓动函数"
+            />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_launcher"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wrapper_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/round_rect"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/wrapper_ease"
+        android:layout_marginBottom="7dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_duraion"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="duration：1000"
+            android:textSize="13sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+
+        <SeekBar
+            android:id="@+id/sb_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="2000"
+            android:progress="1000"
+            />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:background="@drawable/round_rect"
+        android:padding="5dp"
+        android:layout_below="@+id/wrapper_duration"
+        android:divider="#00ffffff"
+        android:dividerHeight="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -3,6 +3,11 @@ package org.ayo.robot.anim;
 import android.os.Bundle;
 
 import org.ayo.robot.anim.ease.DemoEaseActivity;
+import org.ayo.robot.anim.ease.EvaluatorActivity;
+import org.ayo.robot.anim.ease.InterpolatorActivity;
+import org.ayo.robot.anim.frame.DemoFrameAnimate;
+import org.ayo.robot.anim.path.PathAnimDemo1;
+import org.ayo.robot.anim.path.PathAnimDemo2;
 import org.ayo.robot.anim.yoyo.DemoYoyoActivity;
 import org.ayo.sample.menu.Leaf;
 import org.ayo.sample.menu.MainPagerActivity;
@@ -51,9 +56,9 @@ public class MainActivity extends MainPagerActivity {
             MenuItem menuItem = new MenuItem("插值器和估值器", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m3.addMenuItem(menuItem);
             {
-                menuItem.addLeaf(new Leaf("插值器：TimeIntercepter", "", null));
-                menuItem.addLeaf(new Leaf("估值器：TypeEvaluator", "", null));
-                menuItem.addLeaf(new Leaf("缓动函数", "", null));
+                menuItem.addLeaf(new Leaf("插值器：TimeIntercepter", "", InterpolatorActivity.class, 1));
+                menuItem.addLeaf(new Leaf("估值器：TypeEvaluator", "", EvaluatorActivity.class, 1));
+                menuItem.addLeaf(new Leaf("缓动函数", "", EvaluatorActivity.class, 1));
             }
 
             menuItem = new MenuItem("库", R.drawable.weixin_normal, R.drawable.weixin_pressed);
@@ -73,6 +78,7 @@ public class MainActivity extends MainPagerActivity {
             MenuItem menuItem1 = new MenuItem("入门", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m1.addMenuItem(menuItem1);
             {
+                menuItem1.addLeaf(new Leaf("帧动画", "", DemoFrameAnimate.class));
                 menuItem1.addLeaf(new Leaf("Translate", "", null));
                 menuItem1.addLeaf(new Leaf("Scale", "", null));
                 menuItem1.addLeaf(new Leaf("Rotate", "", null));
@@ -126,6 +132,8 @@ public class MainActivity extends MainPagerActivity {
             menuItem = new MenuItem("Path动画", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m3.addMenuItem(menuItem);
             {
+                menuItem.addLeaf(new Leaf("入门", "", PathAnimDemo1.class));
+                menuItem.addLeaf(new Leaf("入门2", "", PathAnimDemo2.class));
                 menuItem.addLeaf(new Leaf("Point的估值器", "", null));
                 menuItem.addLeaf(new Leaf("Path动画", "", null));
                 menuItem.addLeaf(new Leaf("PorterDuffXfermode：图形混合", "", null));

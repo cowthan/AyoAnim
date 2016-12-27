@@ -69,7 +69,7 @@ public class MenuItemFragment extends SBFragment {
 			}
 		});
 
-		if(leaf.attacherClass == null){
+		if(leaf.attacherClass == null && leaf.activityClass == null){
 
 		}else{
 			btn.setBackgroundResource(R.drawable.sel_menu3);

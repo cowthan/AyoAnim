@@ -29,6 +29,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 import android.view.animation.Interpolator;
 
+import com.nineoldandroids.animation.TypeEvaluator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +70,7 @@ public class YoYo {
         private boolean reset = DEFAULT_RESET;//动画结束之后是否恢复到原来的状态，true表示恢复
         private YoYoAnimator animator;//animator类
         private Interpolator interpolator;//interpolator 时间插值类
+        private TypeEvaluator<?> evaluator;//interpolator 时间插值类
         private List<Animator.AnimatorListener> listeners = new ArrayList<Animator.AnimatorListener>();//动画的监听器
 
         //两个构造函数都将使得animator成为一个非空对象
@@ -91,6 +94,10 @@ public class YoYo {
 
         public Builder interpolate(Interpolator interpolator) {
             this.interpolator = interpolator;
+            return this;
+        }
+        public Builder evaluator(TypeEvaluator<?> evaluator) {
+            this.evaluator = evaluator;
             return this;
         }
 
@@ -118,7 +125,9 @@ public class YoYo {
 
         //builder内部的start方法，将animatorset启动
         private void start() {
-            animator.setTarget(target).setDuration(duration).setInterpolator(interpolator)
+            animator.setTarget(target)
+                    .setDuration(duration)
+                    .setInterpolator(interpolator)
                     .setStartDelay(delay).setRest(reset).setRepeat(repeat);
 
             if (listeners.size() > 0) {
