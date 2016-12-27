@@ -2,6 +2,8 @@ package org.ayo.robot.anim;
 
 import android.os.Bundle;
 
+import org.ayo.robot.anim.ease.DemoEaseActivity;
+import org.ayo.robot.anim.yoyo.DemoYoyoActivity;
 import org.ayo.sample.menu.Leaf;
 import org.ayo.sample.menu.MainPagerActivity;
 import org.ayo.sample.menu.Menu;
@@ -41,6 +43,28 @@ public class MainActivity extends MainPagerActivity {
 
     static{
         menus = new ArrayList<Menu>();
+
+        ///--------------------------菜单1：属性动画
+        Menu m3 = new Menu("基本概念", R.drawable.find_normal, R.drawable.find_pressed);
+        menus.add(m3);
+        {
+            MenuItem menuItem = new MenuItem("插值器和估值器", R.drawable.weixin_normal, R.drawable.weixin_pressed);
+            m3.addMenuItem(menuItem);
+            {
+                menuItem.addLeaf(new Leaf("插值器：TimeIntercepter", "", null));
+                menuItem.addLeaf(new Leaf("估值器：TypeEvaluator", "", null));
+                menuItem.addLeaf(new Leaf("缓动函数", "", null));
+            }
+
+            menuItem = new MenuItem("库", R.drawable.weixin_normal, R.drawable.weixin_pressed);
+            m3.addMenuItem(menuItem);
+            {
+                menuItem.addLeaf(new Leaf("ease库demo", "", DemoEaseActivity.class, 1));
+                menuItem.addLeaf(new Leaf("animate库demo", "", DemoYoyoActivity.class, 1));
+            }
+
+        }
+
 
         ///--------------------------菜单1：View动画
         Menu m1 = new Menu("View动画", R.drawable.weixin_normal, R.drawable.weixin_pressed);
@@ -85,7 +109,7 @@ public class MainActivity extends MainPagerActivity {
         }
 
         ///--------------------------菜单1：属性动画
-        Menu m3 = new Menu("属性动画", R.drawable.find_normal, R.drawable.find_pressed);
+        m3 = new Menu("属性动画", R.drawable.find_normal, R.drawable.find_pressed);
         menus.add(m3);
         {
             MenuItem menuItem = new MenuItem("普通", R.drawable.weixin_normal, R.drawable.weixin_pressed);

@@ -7,6 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".App"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
@@ -23,6 +24,16 @@
         <activity android:name=".MainActivity">
         </activity>
 
+        <activity android:name=".yoyo.DemoYoyoActivity" />
+        <activity android:name=".ease.DemoEaseActivity" />
+        <activity android:name=".ease.BounceActivity"/>
+        <activity android:name=".ease.Bounce2Activity"/>
+        <activity android:name=".ease.DemoActivity"/>
+        <activity android:name=".ease.Demo2Activity"/>
+        <activity android:name=".ease.InterpolatorActivity"/>
+        <activity android:name=".ease.EvaluatorActivity"/>
+        <activity android:name=".ease.CustomActivity"/>
+        
         <activity
             android:name="org.ayo.core.attacher.TmplActivityStandard"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"

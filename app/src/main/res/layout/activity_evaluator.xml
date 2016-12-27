@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    >
+
+    <org.ayo.robot.anim.ease.view.EvaluatorView
+        android:id="@+id/drawview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+    <View
+        android:id="@+id/circle"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_alignBottom="@+id/drawview"
+        android:layout_alignLeft="@+id/drawview"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/circle"/>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dp"
+        android:padding="5dp"
+        android:layout_below="@+id/drawview"/>
+
+</RelativeLayout>
