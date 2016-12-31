@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical"
+    android:background="#006600"
+        >
+    <ImageView android:id="@+id/titleImage"
+               android:layout_height="0px"
+               android:layout_weight="1"
+               android:layout_width="match_parent"
+               android:scaleType="centerCrop"
+        android:src="@drawable/ducky"
+               android:transitionName="share_img"
+            />
+    <LinearLayout android:layout_height="0px"
+                  android:layout_width="match_parent"
+                  android:layout_weight="2"
+                  android:orientation="vertical"
+            >
+        <View android:layout_width="match_parent"
+              android:layout_height="2dp"
+              android:background="#808080"/>
+        <TextView android:layout_height="wrap_content"
+                  android:layout_width="match_parent"
+                  android:text="Ducky"
+                  android:textSize="30sp"
+                  android:textColor="#FFF"
+                />
+        <View android:layout_width="match_parent"
+              android:layout_height="2dp"
+              android:background="#808080"/>
+        <TextView android:layout_height="wrap_content"
+                  android:layout_width="match_parent"
+                  android:text="Woot!"
+                  android:textSize="30sp"
+                  android:textColor="#FFF"
+                />
+        <View android:layout_width="match_parent"
+              android:layout_height="2dp"
+              android:background="#808080"/>
+        <TextView android:layout_height="wrap_content"
+                  android:layout_width="match_parent"
+                  android:text="Ball"
+                  android:textSize="30sp"
+                  android:textColor="#FFF"
+                />
+        <View android:layout_width="match_parent"
+              android:layout_height="2dp"
+              android:background="#808080"/>
+        <TextView android:layout_height="wrap_content"
+                  android:layout_width="match_parent"
+                  android:text="Block"
+                  android:textSize="30sp"
+                  android:textColor="#FFF"
+                />
+        <View android:layout_width="match_parent"
+              android:layout_height="2dp"
+              android:background="#808080"/>
+        <TextView android:layout_height="wrap_content"
+                  android:layout_width="match_parent"
+                  android:text="Jelly Bean"
+                  android:textSize="30sp"
+                  android:textColor="#FFF"
+                />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:text="呵呵呵呵"
+        android:layout_marginBottom="30dp"
+        android:transitionName="share_btn"
+        />
+</LinearLayout>

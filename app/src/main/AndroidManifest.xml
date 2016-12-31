@@ -62,6 +62,60 @@
             android:screenOrientation="portrait"
             android:launchMode="singleInstance"
             android:theme="@style/AyoTransparentTheme" />
+
+
+        <activity android:name=".transition.DemoTransitionPage1"
+            android:label="Animation/Activity Transition"
+            android:theme="@style/ActivityTransitionTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".transition.DemoTransitionPage2"
+            android:label="Animation/Activity Transition"
+            android:theme="@style/ActivityTransitionTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".transition.DemoTransitionPage3"
+            android:label="Animation/Activity Transition"
+            android:theme="@style/ActivityTransitionTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".transition.DemoTransitionPage4"
+            android:label="Animation/Activity Transition"
+            android:theme="@style/ActivityTransitionTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".transition.ActivityTransition"
+            android:label="Animation/Activity Transition"
+            android:theme="@style/ActivityTransitionTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".transition.ActivityTransitionDetails"
+            android:label="Animation/Details of a specific thingy"
+            android:theme="@style/ActivityTransitionTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

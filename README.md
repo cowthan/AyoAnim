@@ -799,3 +799,144 @@ http://m.2cto.com/kf/201503/380377.html
 http://m.blog.csdn.net/article/details?id=50838783
 http://blog.jobbole.com/62601/
 http://www.open-open.com/lib/view/open1477879867267.html
+
+Transiton是在5.0之后，也就是21，也就是Build.VERSION_CODES.LOLLIPOP引入的  
+之前的版本只能用Activity的overridePendingTransition()和Fragment的setCustomAnimation()来实现Activity或者Fragment之间的动画切换  
+
+* 关于Activity的overridePendingTransition()和Fragment的setCustomAnimation()
+    * 是将整个页面一起动画变换，比较生硬
+    * 但是用起来比较简单
+    * 而且动画太多，Transition哪儿哪儿都特别华丽，应用又会显得华而不实
+    * 这里面有个度
+
+* 关于Transition
+    * 界面A打开界面B，Transition可以让A和B之间有一定的关联性
+    * 可能是A和B共享同一个元素
+    * 或者B动画开始的位置是基于我们在A中设置的值
+
+### 7.1 主题设置
+
+要使用Transition进行Activity之间的动画变换时，首先需要设置：
+```
+//设置允许通过ActivityOptions.makeSceneTransitionAnimation发送或者接收Bundle
+getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+//设置使用TransitionManager进行动画，不设置的话系统会使用一个默认的TransitionManager
+getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+```
+
+也可以像ApiDemo里那样设置theme：
+```
+<style name="ActivityTransitionTheme" parent="android:Theme.Material" tools:targetApi="lollipop">
+    <item name="android:windowEnterTransition">@transition/explode</item>
+    <item name="android:windowExitTransition">@transition/explode</item>
+    <item name="android:windowSharedElementEnterTransition">@transition/move_image</item>
+    <item name="android:windowSharedElementExitTransition">@transition/move_image</item>
+    <item name="android:windowAllowReturnTransitionOverlap">true</item>
+    <item name="android:windowAllowEnterTransitionOverlap">false</item>
+</style>
+
+<activity android:name=".transition.ActivityTransition"
+    android:label="Animation/Activity Transition"
+    android:theme="@style/ActivityTransitionTheme">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.SAMPLE_CODE" />
+    </intent-filter>
+</activity>
+```
+
+
+### 7.2 动画设置
+
+* Transition有4种变换：如果从A打开B
+    * 退出(exit)   A.getWindow().setExitTransition(new Fade());
+    * 进入(enter)  B.getWindow().setEnterTransition(new Slide());
+    * 返回(return) 此时再从B返回到A，B此时又有个动画，B.getWindow().setReturnTransition(new Fade());
+    * 再次进入(reenter) 回到A了，A又有个动画，A.getWindow().setReenterTransition(new Explode());
+    
+
+### 7.3 动画效果
+    
+* 包括：
+    * Fade(淡出)
+    * Explode(分解)
+    * Slide(滑动)
+    * 系统会默认为其设置Fade动画效果
+    
+### 7.4 打开界面
+
+```
+//不传参数
+Intent intent = new Intent(MainActivityA.this, MainActivityB.class);
+ActivityOptions option = ActivityOptions.makeSceneTransitionAnimation(MainActivityA.this);
+startActivity(intent, option.toBundle());
+
+//传参数
+Intent intent = new Intent(this, ActivityTransitionDetails.class);
+intent.putExtra(KEY_ID, v.getTransitionName());
+ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this, mHero, "hero"); //mHero是ImageView
+startActivity(intent, activityOptions.toBundle());
+```
+
+### 7.5 第一种效果：直接Transition
+
+行了，到这罗列了不少东西了，该看看效果了  
+```
+界面1：
+getWindow().setExitTransition(new Fade());
+getWindow().setReenterTransition(new Explode());
+getWindow().setEnterTransition(new Slide());
+getWindow().setReturnTransition(new Fade());
+
+
+界面2：
+getWindow().setExitTransition(new Fade());
+getWindow().setReenterTransition(new Explode());
+getWindow().setEnterTransition(new Slide());
+getWindow().setReturnTransition(new Fade());
+
+```
+
+上图：  
+![](./img/transition1.gif)
+
+差不多能看出来，Transition框架会把布局切割成单独的部分，然后对每一个部分应用Fade，Explode，Slide效果  
+
+* 大体是怎么切割出单独部分的呢？
+    * 应该是从DecoreView开始的
+    * 只要有ViewGroup包的，就往下切割
+    * 直到切割到一个ViewGroup下面不会再有ViewGroup，这一组就会成为一个单独的部分
+    * 和ViewGroup平级的也可能是一个View，这个View也会成为一个单独的部分
+    * 例如LinearLayout包含RelativeLayout和一个ImageView，RelativeLayout下只有View
+    * 这个RelativeLayout和ImageView会被切割成两个单独的部分
+    
+### 7.6 第二种效果：共享元素变换
+
+界面A打开界面B，A中的一个ImageView会在B中放大显示，这就是ApiDemo里提供的例子  
+
+这个效果跟上面的Slide，Fade，Explode是不冲突的，挺好
+
+第一步：  
+在A和B的布局文件中，给两个ImageView的transitionName属性设置成一样的值，这是必须的  
+android:transitionName="ducky"
+
+第二步：  
+打开界面时，在ActivityOptions.makeSceneTransitionAnimation中将需要共享的元素作为参数传递过去
+```
+Intent intent = new Intent(MainActivityA.this, MainActivityB.class);
+ActivityOptions option = ActivityOptions.makeSceneTransitionAnimation(MainActivityA.this,imageView,"ducky");
+startActivity(intent, option.toBundle());
+
+ActivityOptions.makeSceneTransitionAnimation(MainActivityA.this,imageView,"ducky");
+这里的参数2和3表示：transitionName值为ducky的控件需要共享，在A中就是imageView，在B中你也能根据transitionName找到
+
+//多个元素共享：
+ActivityOptions option = ActivityOptions.makeSceneTransitionAnimation(MainActivityA.this,
+            Pair.create(imageView, "share_image"),
+            Pair.create(button, "share_button"));
+```
+
+效果就是：A中的ImageView会从自己的位置和大小，通过平移和缩放定位到B中对应的位置
+
+看图：  
+![](./img/transition2.gif)

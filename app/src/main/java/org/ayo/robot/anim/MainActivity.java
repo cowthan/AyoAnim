@@ -8,6 +8,9 @@ import org.ayo.robot.anim.ease.InterpolatorActivity;
 import org.ayo.robot.anim.frame.DemoFrameAnimate;
 import org.ayo.robot.anim.path.PathAnimDemo1;
 import org.ayo.robot.anim.path.PathAnimDemo2;
+import org.ayo.robot.anim.transition.ActivityTransition;
+import org.ayo.robot.anim.transition.DemoTransitionPage1;
+import org.ayo.robot.anim.transition.DemoTransitionPage3;
 import org.ayo.robot.anim.yoyo.DemoYoyoActivity;
 import org.ayo.sample.menu.Leaf;
 import org.ayo.sample.menu.MainPagerActivity;
@@ -148,10 +151,12 @@ public class MainActivity extends MainPagerActivity {
         m3 = new Menu("Transition动画", R.drawable.find_normal, R.drawable.find_pressed);
         menus.add(m3);
         {
-            MenuItem menuItem = new MenuItem("入门", R.drawable.weixin_normal, R.drawable.weixin_pressed);
+            MenuItem menuItem = new MenuItem("Transition", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m3.addMenuItem(menuItem);
             {
-                menuItem.addLeaf(new Leaf("入门", "", null));
+                menuItem.addLeaf(new Leaf("直接特效", "", DemoTransitionPage1.class, 1));
+                menuItem.addLeaf(new Leaf("共享元素特效", "", DemoTransitionPage3.class, 1));
+                menuItem.addLeaf(new Leaf("来自ApiDemo的demo", "", ActivityTransition.class, 1));
             }
 
         }
