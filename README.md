@@ -1,6 +1,9 @@
 # AyoAnim
 笔记 for：各种安卓动画； 集合 for：好看动画收集和仿写；库 for：动画便利库
 
+apk下载：  
+![](./img/11d.png)
+
 * 特别说明：
     * 本项目既是动画的学习笔记和demo
     * 也是收集了一些好看的好用的好玩的动画效果
@@ -794,9 +797,11 @@ textview.animate().x(500).y(500).setDuration(5000).setInterpolator(new BounceInt
 https://my.oschina.net/ososchina/blog/677307
 http://m.2cto.com/kf/201503/380377.html
 
+看看效果吧先，Path动画就是让控件跟着一个Path指定的路径走  
+![](./img/anim_path.gif)
+
 ## 7 Transition
 
-http://m.blog.csdn.net/article/details?id=50838783
 http://blog.jobbole.com/62601/
 http://www.open-open.com/lib/view/open1477879867267.html
 
