@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 
-import org.ayo.core.activity.AyoActivityAttacher;
+import org.ayo.robot.anim.AyoActivityAttacher;
 import org.ayo.robot.anim.R;
 
 /**

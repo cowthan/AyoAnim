@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import org.ayo.core.activity.AyoActivity;
 
 /**
  * Created by Administrator on 2016/12/20.

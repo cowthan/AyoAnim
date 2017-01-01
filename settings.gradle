@@ -1,1 +1,1 @@
-include ':app', ':ayo-menu-sample', ':ayo-core', ':ayo-animate'
+include ':app', ':ayo-animate'

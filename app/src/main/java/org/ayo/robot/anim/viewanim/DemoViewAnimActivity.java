@@ -1,6 +1,7 @@
 package org.ayo.robot.anim.viewanim;
 
-import org.ayo.core.activity.AyoActivity;
+
+import org.ayo.robot.anim.AyoActivity;
 
 public class DemoViewAnimActivity extends AyoActivity {
 

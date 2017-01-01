@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
-import org.ayo.core.activity.AyoActivityAttacher;
+import org.ayo.robot.anim.AyoActivityAttacher;
 import org.ayo.robot.anim.R;
 
 /**

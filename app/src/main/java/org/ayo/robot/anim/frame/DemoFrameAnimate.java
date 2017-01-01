@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import org.ayo.core.activity.AyoActivityAttacher;
+import org.ayo.robot.anim.AyoActivityAttacher;
 import org.ayo.robot.anim.R;
 
 /**

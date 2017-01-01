@@ -35,7 +35,7 @@
         <activity android:name=".ease.CustomActivity"/>
         
         <activity
-            android:name="org.ayo.core.attacher.TmplActivityStandard"
+            android:name="org.ayo.sample.menu.attacher.TmplActivityStandard"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="standard"
@@ -43,21 +43,21 @@
             />
 
         <activity
-            android:name="org.ayo.core.attacher.TmplActivitySingleTask"
+            android:name="org.ayo.sample.menu.attacher.TmplActivitySingleTask"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:theme="@style/AyoTransparentTheme" />
 
         <activity
-            android:name="org.ayo.core.attacher.TmplActivitySingleTop"
+            android:name="org.ayo.sample.menu.attacher.TmplActivitySingleTop"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
             android:theme="@style/AyoTransparentTheme" />
 
         <activity
-            android:name="org.ayo.core.attacher.TmplActivitySingleInstance"
+            android:name="org.ayo.sample.menu.attacher.TmplActivitySingleInstance"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleInstance"

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import org.ayo.core.activity.AyoActivity;
+import org.ayo.robot.anim.AyoActivity;
 import org.ayo.robot.anim.R;
 
 

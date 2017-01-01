@@ -15,7 +15,7 @@ import org.ayo.animate.ease.EasingFunction;
 import org.ayo.animate.ease.Functions;
 import org.ayo.animate.yoyo.Techniques;
 import org.ayo.animate.yoyo.YoYo;
-import org.ayo.core.activity.AyoActivity;
+import org.ayo.robot.anim.AyoActivity;
 import org.ayo.robot.anim.R;
 import org.ayo.robot.anim.ease.EvaluatorActivity;
 
