@@ -32,9 +32,9 @@ public enum Techniques {
 
     DropOut(YoYoAnimator.DropOut.class),
     Flash(YoYoAnimator.Flash.class),
-    Hinge(YoYoAnimator.Hinge.class),
+    Hinge(YoYoAnimator.Hinge.class),  ///out
     Landing(YoYoAnimator.Landing.class),
-    TakingOff(YoYoAnimator.TakingOff.class),
+    TakingOff(YoYoAnimator.TakingOff.class), ///out
     Linear(YoYoAnimator.Linear.class),
     Jelly(YoYoAnimator.Jelly.class),
     NewsPaperIn(YoYoAnimator.NewsPaperIn.class),
@@ -54,7 +54,7 @@ public enum Techniques {
     FallRotateIn(YoYoAnimator.FallRotateIn.class),
 
     RollIn(YoYoAnimator.RollIn.class),
-    RollOut(YoYoAnimator.RollOut.class),
+    RollOut(YoYoAnimator.RollOut.class), ///out
 
     BounceIn(YoYoAnimator.BounceIn.class),
     BounceInDown(YoYoAnimator.BounceInDown.class),
@@ -68,16 +68,16 @@ public enum Techniques {
     FadeInLeft(YoYoAnimator.FadeInLeft.class),
     FadeInRight(YoYoAnimator.FadeInRight.class),
 
-    FadeOut(YoYoAnimator.FadeOut.class),
-    FadeOutDown(YoYoAnimator.FadeOutDown.class),
-    FadeOutLeft(YoYoAnimator.FadeOutLeft.class),
-    FadeOutRight(YoYoAnimator.FadeOutRight.class),
-    FadeOutUp(YoYoAnimator.FadeOutUp.class),
+    FadeOut(YoYoAnimator.FadeOut.class), ///out
+    FadeOutDown(YoYoAnimator.FadeOutDown.class), ///out
+    FadeOutLeft(YoYoAnimator.FadeOutLeft.class), ///out
+    FadeOutRight(YoYoAnimator.FadeOutRight.class), ///out
+    FadeOutUp(YoYoAnimator.FadeOutUp.class), ///out
 
     FlipInX(YoYoAnimator.FlipInX.class),
-    FlipOutX(YoYoAnimator.FlipOutX.class),
+    FlipOutX(YoYoAnimator.FlipOutX.class), ///out
     FlipInY(YoYoAnimator.FlipInY.class),
-    FlipOutY(YoYoAnimator.FlipOutY.class),
+    FlipOutY(YoYoAnimator.FlipOutY.class), ///out
 
     RotateIn(YoYoAnimator.RotateIn.class),
     RotateInDownLeft(YoYoAnimator.RotateInDownLeft.class),
@@ -86,20 +86,20 @@ public enum Techniques {
     RotateInUpRight(YoYoAnimator.RotateInUpRight.class),
 
     RotateOut(YoYoAnimator.RotateInUpRight.class),
-    RotateOutDownLeft(YoYoAnimator.RotateOutDownLeft.class),
-    RotateOutDownRight(YoYoAnimator.RotateOutDownRight.class),
-    RotateOutUpLeft(YoYoAnimator.RotateOutUpLeft.class),
-    RotateOutUpRight(YoYoAnimator.RotateOutUpRight.class),
+    RotateOutDownLeft(YoYoAnimator.RotateOutDownLeft.class), ///out
+    RotateOutDownRight(YoYoAnimator.RotateOutDownRight.class), ///out
+    RotateOutUpLeft(YoYoAnimator.RotateOutUpLeft.class), ///out
+    RotateOutUpRight(YoYoAnimator.RotateOutUpRight.class), ///out
 
     SlideInLeft(YoYoAnimator.SlideInLeft.class),
     SlideInRight(YoYoAnimator.SlideInRight.class),
     SlideInUp(YoYoAnimator.SlideInUp.class),
     SlideInDown(YoYoAnimator.SlideInDown.class),
 
-    SlideOutLeft(YoYoAnimator.SlideOutLeft.class),
-    SlideOutRight(YoYoAnimator.SlideOutRight.class),
-    SlideOutUp(YoYoAnimator.SlideOutUp.class),
-    SlideOutDown(YoYoAnimator.SlideOutDown.class),
+    SlideOutLeft(YoYoAnimator.SlideOutLeft.class), ///out
+    SlideOutRight(YoYoAnimator.SlideOutRight.class), ///out
+    SlideOutUp(YoYoAnimator.SlideOutUp.class), ///out
+    SlideOutDown(YoYoAnimator.SlideOutDown.class), ///out
 
     ZoomIn(YoYoAnimator.ZoomIn.class),
     ZoomInDown(YoYoAnimator.ZoomInDown.class),
@@ -107,11 +107,11 @@ public enum Techniques {
     ZoomInRight(YoYoAnimator.ZoomInRight.class),
     ZoomInUp(YoYoAnimator.ZoomInUp.class),
 
-    ZoomOut(YoYoAnimator.ZoomOut.class),
-    ZoomOutDown(YoYoAnimator.ZoomOutDown.class),
-    ZoomOutLeft(YoYoAnimator.ZoomOutLeft.class),
-    ZoomOutRight(YoYoAnimator.ZoomOutRight.class),
-    ZoomOutUp(YoYoAnimator.ZoomOutUp.class);
+    ZoomOut(YoYoAnimator.ZoomOut.class), ///out
+    ZoomOutDown(YoYoAnimator.ZoomOutDown.class), ///out
+    ZoomOutLeft(YoYoAnimator.ZoomOutLeft.class), ///out
+    ZoomOutRight(YoYoAnimator.ZoomOutRight.class), ///out
+    ZoomOutUp(YoYoAnimator.ZoomOutUp.class); ///out
 
     private Class animatorClazz;
 
