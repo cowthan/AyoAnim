@@ -4,6 +4,20 @@
 apk下载：  
 ![](./img/11d.png)
 
+没整到jcenter上，暂时就用aar包吧，也挺省劲：[下载地址](https://github.com/cowthan/AyoAnim/blob/master/ayo-anim.aar?raw=true)  
+下载下来文件名是：ayo-anim.aar，拷到libs目录里  
+然后在build.gradle里引入：
+```
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+compile(name:'ayo-anim', ext:'aar')
+```
+
+
 * 特别说明：
     * 本项目既是动画的学习笔记和demo
     * 也是收集了一些好看的好用的好玩的动画效果

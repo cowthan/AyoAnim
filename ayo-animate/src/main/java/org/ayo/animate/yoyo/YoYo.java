@@ -26,10 +26,9 @@ package org.ayo.animate.yoyo;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.TypeEvaluator;
 import android.view.View;
 import android.view.animation.Interpolator;
-
-import com.nineoldandroids.animation.TypeEvaluator;
 
 import java.util.ArrayList;
 import java.util.List;
