@@ -58,7 +58,10 @@ public class DemoTranslateX extends DemoBase{
 //
 //        );
     }
-
+    @Override
+    protected float parseProgress(int progress) {
+        return (progress-100)/100f;
+    }
 
     @Override
     protected View createTestView() {

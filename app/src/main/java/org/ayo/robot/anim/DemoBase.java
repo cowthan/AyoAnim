@@ -275,12 +275,12 @@ public abstract class DemoBase extends AyoActivity {
                 to = getDefaultTo();
                 sb_from.setProgress((int) from);
                 sb_to.setProgress((int) to);
-
+                tv_from_to.setText("开始--结束(x, y)".replace("x", parseProgress((int) from)+"").replace("y", parseProgress((int) to)+""));
                 sb_from.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        from = parseProgress(progress);
-                        tv_from_to.setText("开始--结束(x, y)".replace("x", from+"").replace("y", to+""));
+                        from = progress;
+                        tv_from_to.setText("开始--结束(x, y)".replace("x", parseProgress((int) from)+"").replace("y", parseProgress((int) to)+""));
                     }
 
                     @Override
@@ -297,8 +297,8 @@ public abstract class DemoBase extends AyoActivity {
                 sb_to.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        to = parseProgress(progress);
-                        tv_from_to.setText("开始--结束(x, y)".replace("x", from+"").replace("y", to+""));
+                        to = progress;
+                        tv_from_to.setText("开始--结束(x, y)".replace("x", parseProgress((int) from)+"").replace("y", parseProgress((int) to)+""));
                     }
 
                     @Override

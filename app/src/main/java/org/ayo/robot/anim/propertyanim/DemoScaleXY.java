@@ -25,30 +25,31 @@ public class DemoScaleXY extends DemoBase{
     }
     @Override
     protected float getMinValue() {
-        return -2;
+        return -100;
     }
 
     @Override
     protected float getMaxValue() {
-        return 2;
+        return 200;
     }
-
+    //200对应  -2到2
     @Override
     protected float getDefaultFrom() {
-        return 0.5f;
+        return 100;
     }
 
     @Override
     protected float getDefaultTo() {
-        return 2;
+        return 200;
     }
     @Override
     protected Animator createAnimator(View v){
 
         ViewGroup parent = (ViewGroup) v.getParent();
-        int distance = parent.getWidth() - v.getLeft();
-        ObjectAnimator o = ObjectAnimator.ofFloat(v, "scaleX", getFrom(), getTo());
-        ObjectAnimator o2 = ObjectAnimator.ofFloat(v, "scaleY", getFrom(), getTo());
+        float from = (getFrom()-100)/100f;
+        float to = (getTo()-100)/100f;
+        ObjectAnimator o = ObjectAnimator.ofFloat(v, "scaleX", from, to);
+        ObjectAnimator o2 = ObjectAnimator.ofFloat(v, "scaleY", from, to);
         o.setRepeatMode(getRepeatMode());
         o.setRepeatCount(getRepeatCount());
         o2.setRepeatMode(getRepeatMode());
@@ -57,7 +58,10 @@ public class DemoScaleXY extends DemoBase{
         mAnimatorSet.playTogether(o, o2);
         return mAnimatorSet;
     }
-
+    @Override
+    protected float parseProgress(int progress) {
+        return (progress-100)/100f;
+    }
 
     @Override
     protected View createTestView() {

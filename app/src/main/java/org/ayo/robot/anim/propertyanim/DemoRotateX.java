@@ -24,7 +24,7 @@ public class DemoRotateX extends DemoBase{
     }
     @Override
     protected float getMinValue() {
-        return 0;
+        return -360;
     }
 
     @Override
@@ -34,23 +34,27 @@ public class DemoRotateX extends DemoBase{
 
     @Override
     protected float getDefaultFrom() {
-        return 0;
+        return 360;
     }
 
     @Override
     protected float getDefaultTo() {
-        return 360;
+        return 720;
     }
 
     @Override
     protected Animator createAnimator(View v){
 
         ViewGroup parent = (ViewGroup) v.getParent();
-        int distance = parent.getWidth() - v.getLeft();
-        ObjectAnimator o = ObjectAnimator.ofFloat(v, "rotationX", getFrom(), getTo());
+        float from = getFrom() - 360;
+        float to = getTo() - 360;
+        ObjectAnimator o = ObjectAnimator.ofFloat(v, "rotationX", from, to);
         return o;
     }
-
+    @Override
+    protected float parseProgress(int progress) {
+        return progress - 360;
+    }
 
     @Override
     protected View createTestView() {

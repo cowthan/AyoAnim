@@ -33,12 +33,12 @@ public class DemoAlpha extends DemoBase{
 
     @Override
     protected float getMaxValue() {
-        return 1;
+        return 100;
     }
 
     @Override
     protected float getDefaultFrom() {
-        return 1;
+        return 100;
     }
 
     @Override
@@ -52,10 +52,16 @@ public class DemoAlpha extends DemoBase{
 
         ViewGroup parent = (ViewGroup) v.getParent();
         int distance = parent.getWidth() - v.getLeft();
-        ObjectAnimator o = ObjectAnimator.ofFloat(v, "alpha", getFrom(), getTo());
+        float from = getFrom()/100f;
+        float to  = getTo() / 100f;
+        ObjectAnimator o = ObjectAnimator.ofFloat(v, "alpha", from, to);
         return o;
     }
 
+    @Override
+    protected float parseProgress(int progress) {
+        return progress/100f;
+    }
 
     @Override
     protected View createTestView() {
