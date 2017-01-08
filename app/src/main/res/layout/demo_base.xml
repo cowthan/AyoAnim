@@ -75,7 +75,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:background="@drawable/sel_menu1"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_below="@+id/wrapper"
@@ -84,18 +83,25 @@
         >
 
         <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:background="@drawable/sel_menu2"
+            android:textColor="#ffffff"
+            android:text="alpha"
+            />
+        <TextView
             android:id="@+id/tv_ease"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:gravity="left|center_vertical"
+            android:background="@drawable/sel_menu1"
+            android:gravity="center"
             android:text="选择缓动函数"
-            />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_launcher"
+            android:layout_marginLeft="10dp"
             />
     </LinearLayout>
 
@@ -169,7 +175,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/wrapper_repeat"
+        android:id="@+id/wrapper_from_to"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -177,6 +183,44 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_below="@+id/wrapper_pivot"
+        android:layout_marginBottom="7dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_from_to"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="开始--结束：(x, y)"
+            android:textSize="13sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+
+        <SeekBar
+            android:id="@+id/sb_from"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="100"
+            android:progress="0"
+            />
+        <SeekBar
+            android:id="@+id/sb_to"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="100"
+            android:progress="0"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wrapper_repeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/round_rect"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/wrapper_from_to"
         android:layout_marginBottom="7dp"
         >
 
@@ -272,7 +316,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:text="start" />
         <Button
             android:id="@+id/btn_stop"
@@ -280,7 +324,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:text="stop" />
         <Button
             android:id="@+id/btn_reset"
@@ -288,7 +332,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:text="reset" />
         <Button
             android:id="@+id/btn_setting"
@@ -296,8 +340,8 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="设置" />
 
         <Button
@@ -306,9 +350,9 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="给结果" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="OK" />
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"

@@ -23,23 +23,30 @@ public class DemoScaleY extends DemoBase{
         return "scaleY";
     }
     @Override
-    protected float getFrom() {
-        return 1;
+    protected float getMinValue() {
+        return -2;
     }
 
     @Override
-    protected float getTo() {
-        return 3;
+    protected float getMaxValue() {
+        return 2;
+    }
+
+    @Override
+    protected float getDefaultFrom() {
+        return 0.5f;
+    }
+
+    @Override
+    protected float getDefaultTo() {
+        return 2;
     }
     @Override
     protected Animator createAnimator(View v){
 
-        v.setPivotX(getCustomPivotX()/100 * v.getWidth());
-        v.setPivotY(getCustomPivotY()/100 * v.getHeight());
-
         ViewGroup parent = (ViewGroup) v.getParent();
         int distance = parent.getWidth() - v.getLeft();
-        ObjectAnimator o = ObjectAnimator.ofFloat(v, "scaleY", 2, 3);
+        ObjectAnimator o = ObjectAnimator.ofFloat(v, "scaleY", getFrom(), getTo());
         return o;
     }
 

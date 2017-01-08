@@ -82,8 +82,12 @@ public abstract class DemoBase extends AyoActivity {
     }
 
     protected abstract String getType();
-    protected abstract float getFrom();
-    protected abstract float getTo();
+    final protected float getFrom(){
+        return from;
+    }
+    final protected float getTo(){
+        return to;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,15 +259,79 @@ public abstract class DemoBase extends AyoActivity {
                 Intent data = new Intent();
                 data.putExtra("anim", animatorInfo);
                 setResult(200, data);
-                finish();
+             finish();
             }
         });
+
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final TextView tv_from_to = (TextView) findViewById(R.id.tv_from_to);
+                SeekBar sb_from = (SeekBar) findViewById(R.id.sb_from);
+                SeekBar sb_to = (SeekBar) findViewById(R.id.sb_to);
+                sb_from.setMax((int) (getMaxValue() - getMinValue()));
+                sb_to.setMax((int) (getMaxValue() - getMinValue()));
+                from = getDefaultFrom();
+                to = getDefaultTo();
+                sb_from.setProgress((int) from);
+                sb_to.setProgress((int) to);
+
+                sb_from.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        from = parseProgress(progress);
+                        tv_from_to.setText("开始--结束(x, y)".replace("x", from+"").replace("y", to+""));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+
+                    }
+                });
+
+                sb_to.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        to = parseProgress(progress);
+                        tv_from_to.setText("开始--结束(x, y)".replace("x", from+"").replace("y", to+""));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+
+                    }
+                });
+            }
+        }, 500);
+
+
+
+        TextView tv_type = (TextView) findViewById(R.id.tv_type);
+        tv_type.setText(getType());
 
         View v = createTestView();
         if(v != null){
             FrameLayout container = (FrameLayout) findViewById(R.id.container);
             container.addView(v);
         }
+    }
+    private float from, to;
+    protected abstract float getMinValue();
+    protected abstract float getMaxValue();
+    protected abstract float getDefaultFrom();
+    protected abstract float getDefaultTo();
+    protected float parseProgress(int progress){
+        return progress;
     }
 
     private float pivotX, pivotY;

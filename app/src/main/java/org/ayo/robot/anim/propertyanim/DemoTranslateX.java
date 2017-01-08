@@ -24,24 +24,34 @@ public class DemoTranslateX extends DemoBase{
         return "translationX";
     }
     @Override
-    protected float getFrom() {
-        return -distance;
+    protected float getMinValue() {
+        return -100;
     }
 
     @Override
-    protected float getTo() {
+    protected float getMaxValue() {
+        return 100;
+    }
+
+    @Override
+    protected float getDefaultFrom() {
         return 0;
     }
+
+    @Override
+    protected float getDefaultTo() {
+        return 100;
+    }
     int distance = 0;
+    boolean isInited  = false;
     @Override
     protected Animator createAnimator(View v){
 
-        v.setPivotX(getCustomPivotX()/100 * v.getWidth());
-        v.setPivotY(getCustomPivotY()/100 * v.getHeight());
-
         ViewGroup parent = (ViewGroup) v.getParent();
         distance = parent.getWidth() - v.getLeft();
-        ObjectAnimator o = ObjectAnimator.ofFloat(v, "translationX", -distance, 0);
+        float from = v.getWidth() * (getFrom()-100)/100f;
+        float to = v.getWidth() * (getTo()-100)/100f;
+        ObjectAnimator o = ObjectAnimator.ofFloat(v, "translationX", from , to);
         return o;
 //        AnimatorSet mAnimatorSet = new AnimatorSet();
 //        mAnimatorSet.playTogether(

@@ -144,6 +144,8 @@ public class MainActivity extends MainPagerActivity {
                 menuItem.addLeaf(new Leaf("旋转Y", "", DemoRotateY.class, 1));
                 menuItem.addLeaf(new Leaf("透明度", "", DemoAlpha.class, 1));
                 menuItem.addLeaf(new Leaf("动画编辑器", "", AnimatorCreateActivity.class));
+                menuItem.addLeaf(new Leaf("ARGB", "", AnimatorCreateActivity.class));
+                menuItem.addLeaf(new Leaf("Point", "", AnimatorCreateActivity.class));
             }
 
             menuItem = new MenuItem("Path动画", R.drawable.weixin_normal, R.drawable.weixin_pressed);

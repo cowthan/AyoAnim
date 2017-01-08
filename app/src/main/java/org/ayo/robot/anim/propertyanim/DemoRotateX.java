@@ -23,24 +23,31 @@ public class DemoRotateX extends DemoBase{
         return "rotationX";
     }
     @Override
-    protected float getFrom() {
+    protected float getMinValue() {
         return 0;
     }
 
     @Override
-    protected float getTo() {
+    protected float getMaxValue() {
+        return 360;
+    }
+
+    @Override
+    protected float getDefaultFrom() {
+        return 0;
+    }
+
+    @Override
+    protected float getDefaultTo() {
         return 360;
     }
 
     @Override
     protected Animator createAnimator(View v){
 
-        v.setPivotX(getCustomPivotX()/100 * v.getWidth());
-        v.setPivotY(getCustomPivotY()/100 * v.getHeight());
-
         ViewGroup parent = (ViewGroup) v.getParent();
         int distance = parent.getWidth() - v.getLeft();
-        ObjectAnimator o = ObjectAnimator.ofFloat(v, "rotationX", 0, 360);
+        ObjectAnimator o = ObjectAnimator.ofFloat(v, "rotationX", getFrom(), getTo());
         return o;
     }
 

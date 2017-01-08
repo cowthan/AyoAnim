@@ -27,24 +27,32 @@ public class DemoAlpha extends DemoBase{
     }
 
     @Override
-    protected float getFrom() {
-        return 1;
-    }
-
-    @Override
-    protected float getTo() {
+    protected float getMinValue() {
         return 0;
     }
 
     @Override
-    protected Animator createAnimator(View v){
+    protected float getMaxValue() {
+        return 1;
+    }
 
-        v.setPivotX(getCustomPivotX()/100 * v.getWidth());
-        v.setPivotY(getCustomPivotY()/100 * v.getHeight());
+    @Override
+    protected float getDefaultFrom() {
+        return 1;
+    }
+
+    @Override
+    protected float getDefaultTo() {
+        return 0;
+    }
+
+
+    @Override
+    protected Animator createAnimator(View v){
 
         ViewGroup parent = (ViewGroup) v.getParent();
         int distance = parent.getWidth() - v.getLeft();
-        ObjectAnimator o = ObjectAnimator.ofFloat(v, "alpha", 1, 0);
+        ObjectAnimator o = ObjectAnimator.ofFloat(v, "alpha", getFrom(), getTo());
         return o;
     }
 
