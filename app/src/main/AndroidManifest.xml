@@ -33,6 +33,18 @@
         <activity android:name=".ease.InterpolatorActivity"/>
         <activity android:name=".ease.EvaluatorActivity"/>
         <activity android:name=".ease.CustomActivity"/>
+
+
+        <activity android:name=".propertyanim.DemoAlpha"/>
+        <activity android:name=".propertyanim.DemoRotateX"/>
+        <activity android:name=".propertyanim.DemoRotate"/>
+        <activity android:name=".propertyanim.DemoRotateY"/>
+        <activity android:name=".propertyanim.DemoScaleX"/>
+        <activity android:name=".propertyanim.DemoScaleXY"/>
+        <activity android:name=".propertyanim.DemoScaleY"/>
+        <activity android:name=".propertyanim.DemoTranslateX"/>
+        <activity android:name=".propertyanim.DemoTranslateY"/>
+
         
         <activity
             android:name="org.ayo.sample.menu.attacher.TmplActivityStandard"

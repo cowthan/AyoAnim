@@ -8,6 +8,16 @@ import org.ayo.robot.anim.ease.InterpolatorActivity;
 import org.ayo.robot.anim.frame.DemoFrameAnimate;
 import org.ayo.robot.anim.path.PathAnimDemo1;
 import org.ayo.robot.anim.path.PathAnimDemo2;
+import org.ayo.robot.anim.propertyanim.AnimatorCreateActivity;
+import org.ayo.robot.anim.propertyanim.DemoAlpha;
+import org.ayo.robot.anim.propertyanim.DemoRotate;
+import org.ayo.robot.anim.propertyanim.DemoRotateX;
+import org.ayo.robot.anim.propertyanim.DemoRotateY;
+import org.ayo.robot.anim.propertyanim.DemoScaleX;
+import org.ayo.robot.anim.propertyanim.DemoScaleXY;
+import org.ayo.robot.anim.propertyanim.DemoScaleY;
+import org.ayo.robot.anim.propertyanim.DemoTranslateX;
+import org.ayo.robot.anim.propertyanim.DemoTranslateY;
 import org.ayo.robot.anim.transition.ActivityTransition;
 import org.ayo.robot.anim.transition.DemoTransitionPage1;
 import org.ayo.robot.anim.transition.DemoTransitionPage3;
@@ -124,12 +134,16 @@ public class MainActivity extends MainPagerActivity {
             MenuItem menuItem = new MenuItem("普通", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m3.addMenuItem(menuItem);
             {
-                menuItem.addLeaf(new Leaf("平移", "", null));
-                menuItem.addLeaf(new Leaf("缩放", "", null));
-                menuItem.addLeaf(new Leaf("旋转", "", null));
-                menuItem.addLeaf(new Leaf("透明度", "", null));
-                menuItem.addLeaf(new Leaf("ValueAnimator", "", null));
-                menuItem.addLeaf(new Leaf("动画编辑器", "", null));
+                menuItem.addLeaf(new Leaf("平移X", "", DemoTranslateX.class, 1));
+                menuItem.addLeaf(new Leaf("平移Y", "", DemoTranslateY.class, 1));
+                menuItem.addLeaf(new Leaf("缩放", "", DemoScaleXY.class, 1));
+                menuItem.addLeaf(new Leaf("缩放X", "", DemoScaleX.class, 1));
+                menuItem.addLeaf(new Leaf("缩放Y", "", DemoScaleY.class, 1));
+                menuItem.addLeaf(new Leaf("旋转", "", DemoRotate.class, 1));
+                menuItem.addLeaf(new Leaf("旋转X", "", DemoRotateX.class, 1));
+                menuItem.addLeaf(new Leaf("旋转Y", "", DemoRotateY.class, 1));
+                menuItem.addLeaf(new Leaf("透明度", "", DemoAlpha.class, 1));
+                menuItem.addLeaf(new Leaf("动画编辑器", "", AnimatorCreateActivity.class));
             }
 
             menuItem = new MenuItem("Path动画", R.drawable.weixin_normal, R.drawable.weixin_pressed);
@@ -138,11 +152,6 @@ public class MainActivity extends MainPagerActivity {
                 menuItem.addLeaf(new Leaf("入门", "", PathAnimDemo1.class));
                 menuItem.addLeaf(new Leaf("入门2", "", PathAnimDemo2.class));
                 menuItem.addLeaf(new Leaf("Point的估值器", "", null));
-                menuItem.addLeaf(new Leaf("Path动画", "", null));
-                menuItem.addLeaf(new Leaf("PorterDuffXfermode：图形混合", "", null));
-                menuItem.addLeaf(new Leaf("PorterDuffXfermode：聚焦美女", "", null));
-                menuItem.addLeaf(new Leaf("PorterDuffXfermode：聚焦美女2", "", null)); //DemoPorterDuffXfermode3.class
-                menuItem.addLeaf(new Leaf("PorterDuffXfermode：画画板，橡皮擦", "", null));//DemoPorterDuffXfermode4.class
             }
 
         }

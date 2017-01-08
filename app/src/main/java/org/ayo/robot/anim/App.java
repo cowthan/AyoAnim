@@ -15,5 +15,6 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         app = this;
+        org.ayo.sample.menu.notify.Toaster.init(this);
     }
 }
