@@ -1,6 +1,7 @@
 package org.ayo.robot.anim.svg_vectordrawable;
 
 import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -50,6 +51,7 @@ public class ExampleActivity extends ActivityAttacher {
     for (final Drawable drawable : textView.getCompoundDrawables()) {
       if (drawable instanceof Animatable) {
         ((Animatable) drawable).start();
+        AnimatedVectorDrawable d = null;
       }
     }
   }
