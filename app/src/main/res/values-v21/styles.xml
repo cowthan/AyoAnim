@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
+        <item name="android:colorControlHighlight">@color/colorControlHighlight</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/logo</item>
+    </style>
+
+       <!-- <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
+                &lt;!&ndash; Customize your theme here. &ndash;&gt;
+                <item name="colorPrimary">@color/colorPrimary</item>
+                <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+                <item name="colorAccent">@color/colorAccent</item>
+        </style>-->
         <style name="ActivityTransitionTheme" parent="android:Theme.Material">
                 <item name="android:windowEnterTransition">@transition/explode</item>
                 <item name="android:windowExitTransition">@transition/explode</item>

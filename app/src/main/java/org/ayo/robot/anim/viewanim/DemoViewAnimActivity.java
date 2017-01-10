@@ -19,7 +19,7 @@ public class DemoViewAnimActivity extends AyoActivity {
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.ac_yoyo_demo_main);
+//        setContentView(R.vector_1.ac_yoyo_demo_main);
 //
 //        mTarget = findViewById(R.id.hello_world);
 //        mTarget2 = findViewById(R.id.hello_world2);

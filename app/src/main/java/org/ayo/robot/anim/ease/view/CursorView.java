@@ -33,8 +33,8 @@ public class CursorView extends View {
     }
 
     private void init() {
-        width = dip2px(20); //from layout
-        height = dip2px(8); //from layout
+        width = dip2px(20); //from vector_1
+        height = dip2px(8); //from vector_1
 
         paint = new Paint();
         paint.setAntiAlias(true);

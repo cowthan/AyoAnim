@@ -45,13 +45,14 @@
         <activity android:name=".propertyanim.DemoTranslateX"/>
         <activity android:name=".propertyanim.DemoTranslateY"/>
 
+        <activity android:name=".svg_vectordrawable.DemoVector"/>
         
         <activity
             android:name="org.ayo.sample.menu.attacher.TmplActivityStandard"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="standard"
-            android:theme="@style/AyoTransparentTheme"
+            android:theme="@style/AppTheme"
             />
 
         <activity
@@ -59,21 +60,21 @@
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
-            android:theme="@style/AyoTransparentTheme" />
+            android:theme="@style/AppTheme.Transparent" />
 
         <activity
             android:name="org.ayo.sample.menu.attacher.TmplActivitySingleTop"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
-            android:theme="@style/AyoTransparentTheme" />
+            android:theme="@style/AppTheme.Transparent" />
 
         <activity
             android:name="org.ayo.sample.menu.attacher.TmplActivitySingleInstance"
             android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleInstance"
-            android:theme="@style/AyoTransparentTheme" />
+            android:theme="@style/AppTheme.Transparent" />
 
 
         <activity android:name=".transition.DemoTransitionPage1"

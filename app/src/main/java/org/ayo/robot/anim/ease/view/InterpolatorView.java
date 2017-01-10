@@ -37,8 +37,8 @@ public class InterpolatorView extends View {
     }
 
     private void init() {
-        width = dip2px(100); //from layout, 100dp
-        height = dip2px(100); //from layout
+        width = dip2px(100); //from vector_1, 100dp
+        height = dip2px(100); //from vector_1
         blankTB = height * 2 / 7;//why?
         blankLR = 0;
 

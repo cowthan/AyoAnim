@@ -814,7 +814,288 @@ http://m.2cto.com/kf/201503/380377.html
 看看效果吧先，Path动画就是让控件跟着一个Path指定的路径走  
 ![](./img/anim_path.gif)
 
-## 7 Transition
+
+## 7 Material动画
+
+安卓L的Material新增了几种动画：
+- Touch feedback（触摸反馈）
+- Reveal effect（揭露效果）
+- Activity transitions（Activity转换效果）---下一节
+- Curved motion（曲线运动）----就是path动画
+- View state changes （视图状态改变）
+- Animate Vector Drawables（可绘矢量动画）
+
+### 7.1 Touch feedback
+
+- 最明显，最具代表性的就是波纹动画
+- 使用了Material主题后，波纹动画会自动应用在所有的控件上
+- 可以来设置其属性来调整到我们需要的效果
+
+
+android:colorControlHighlight：设置波纹颜色
+android:colorAccent：设置checkbox等控件的选中颜色
+colorAccent设置在values/style.xml下
+android:colorControlHighlight设置在values-21/style.xml下
+
+
+### 7.2 Reveal effect
+
+```
+btn2.setOnClickListener(new View.OnClickListener(){
+    @Override
+    public void onClick(View v) {
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            Animator animator = null;
+            animator = ViewAnimationUtils.createCircularReveal(
+                    btn2,
+                    0,
+                    0,
+                    0,
+                    (float) Math.hypot(btn2.getWidth(), btn2.getHeight()));
+            animator.setInterpolator(new AccelerateDecelerateInterpolator());
+            animator.setDuration(2000);
+            animator.start();
+        }else{
+            Toaster.toastShort("只支持5.0及其以上系统");
+        }
+
+    }
+});
+```
+
+### 7.3 Curved motion
+
+Path动画
+
+### 7.4 View state changes
+
+View状态，和之前设置的selector是一样的：
+```
+android:state_activated      State value for StateListDrawable,
+                             set when a view or its parent has been "activated"
+                             meaning the user has currently marked it as being
+                             of interest.
+android:state_active         State value for StateListDrawable.
+                             display a check mark.
+android:state_checked        State identifier indicating that the object is
+                             currently checked.
+android:state_enabled        State value for StateListDrawable, set when a view is enabled.
+android:state_first          State value for StateListDrawable.
+android:state_focused        State value for StateListDrawable, set when a view has input focus.
+android:state_last           State value for StateListDrawable.
+android:state_middle         State value for StateListDrawable.
+android:state_pressed        State value for StateListDrawable, set when the user is pressing down in a view.
+android:state_selected       State value for StateListDrawable, set when a view (or one of its parents)
+                             is currently selected.
+android:state_single         State value for StateListDrawable.
+android:state_window_focused
+```
+
+#### 1 传统的selector
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:state_pressed="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle" >
+            <corners android:radius="3dp"/>
+            <solid android:color="@color/text_menu1_pressed" />
+        </shape>
+
+    </item>
+
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle" >
+            <corners android:radius="3dp"/>
+            <solid android:color="@color/text_menu1_normal" />
+        </shape>
+
+    </item>
+
+</selector>
+```
+
+#### 2 StateListAnimator
+
+这是个动画，5.0提供，可以用来设置状态改变时的动画
+
+放在res/anim里
+
+```
+sel_anim_1.xml
+
+<!-- animate the translationZ property of a view when pressed -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:state_pressed="true">
+    <set>
+      <objectAnimator android:propertyName="translationZ"
+        android:duration="@android:integer/config_shortAnimTime"
+        android:valueTo="2dp"
+        android:valueType="floatType"/>
+        <!-- you could have other objectAnimator elements
+             here for "x" and "y", or other properties -->
+    </set>
+  </item>
+  <item android:state_enabled="true"
+    android:state_pressed="false"
+    android:state_focused="true">
+    <set>
+      <objectAnimator android:propertyName="translationZ"
+        android:duration="100"
+        android:valueTo="0"
+        android:valueType="floatType"/>
+    </set>
+  </item>
+</selector>
+```
+
+代码加载：
+```
+StateListAnimator stateLAnim = AnimatorInflater.loadStateListAnimator(this,R.anim.sel_anim_1);
+tv_elevation.setStateListAnimator(stateLAnim);
+
+<Button
+    android:id="@+id/btn2"
+    android:layout_width="match_parent"
+    android:layout_margin="20dp"
+    android:layout_height="150dp"
+    android:colorControlHighlight="#ff0000"
+    android:colorAccent="#00ff00"
+    android:text="StateListAnimator"
+    android:background="@drawable/sel_menu3"
+    android:stateListAnimator="@anim/sel_anim_1"
+    />
+```
+
+如何在低版本实现相关的这种动画呢？
+
+http://stackoverflow.com/questions/30545379/android-statelistanimator-in-pre-lollipop
+这里给出了答案
+
+也就是这个库实现的原理: https://github.com/ZieIony/Carbon
+
+#### 3 AnimatedStateListDrawable
+
+这个效果有点意思
+- 当你是pressed状态的时候animation-list正着走一遍，drawable使用最后一个。
+- 当你是default状态时animation-list反着走一遍，drawable使用第一个。
+
+放在drawable里
+```
+sel_anim_drawable_1.xml
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- provide a different drawable for each state -->
+    <item
+        android:id="@+id/pressed"
+        android:drawable="@drawable/btn_pressed"
+        android:state_pressed="true"/>
+    <!-- <item
+        android:id="@+id/focused"
+        android:drawable="@drawable/btn_focused"
+        android:state_focused="true"/> -->
+    <item
+        android:id="@id/default1"
+        android:drawable="@drawable/btn_default"/>
+
+    <!-- specify a transition -->
+    <transition
+        android:fromId="@+id/default1"
+        android:toId="@+id/pressed" >
+        <animation-list>
+            <item
+                android:drawable="@drawable/con_time_tk"
+                android:duration="500"/>
+            <item
+                android:drawable="@drawable/btn_default"
+                android:duration="500"/>
+            <item
+                android:drawable="@drawable/btn_focused"
+                android:duration="500"/>
+            <item
+                android:drawable="@drawable/btn_pressed"
+                android:duration="500"/>
+            <item
+                android:drawable="@drawable/con_time_xm"
+                android:duration="500"/>
+            <item
+                android:drawable="@drawable/con_time_tk"
+                android:duration="500"/>
+        </animation-list>
+    </transition>
+
+</animated-selector>
+```
+
+### 7.5 Animate Vector Drawables
+
+这里有个话题：
+- 绘制svg：需要借助第三方，将svg转成Path对象，然后drawPath：http://blog.csdn.net/tianjian4592/article/details/44733123/
+- svg转成VectorDrawable：https://github.com/inloop/svg2android.git，一个js搞定
+- 怎么使用vectorDrawable：http://blog.csdn.net/cym492224103/article/details/41677825
+
+http://blog.csdn.net/tianjian4592/article/details/44733123/
+http://blog.csdn.net/cym492224103/article/details/41677825
+http://www.open-open.com/lib/view/open1416279313977.html
+svg2Path: http://blog.csdn.net/tianjian4592/article/details/44733123/
+
+VectorDrawable:
+大体上是这样：
+```
+首先在drawable目录下，有vector定义，vector和svg可以互相转化，也可以转化成Path对象来drawPath
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:height="64dp"
+        android:width="64dp"
+        android:viewportHeight="600"
+        android:viewportWidth="600" >
+  <group
+      android:name="rotationGroup"
+      android:pivotX="300.0"
+      android:pivotY="300.0"
+      android:rotation="45.0" >
+    <path
+        android:name="v"
+        android:fillColor="#000000"
+        android:pathData="M300,70 l 0,-70 70,70 0,0 -70,70z" />
+  </group>
+</vector>
+
+这个是一个比较简单的图形，复杂的svg图数据很多
+```
+
+```
+然后定义对这个vector，也就是矢量图的变换：即AnimatedVectorDrawable
+放在drawable目录下：avd.xml
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:drawable="@drawable/vectordrawable" >
+  <target
+      android:name="rotationGroup"
+      android:animation="@anim/rotation" />
+  <target
+      android:name="v"
+      android:animation="@anim/path_morph" />
+</animated-vector>
+
+```
+
+```
+使用这个AnimatedVectorDrawable
+ <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin"
+      android:text="@string/example_from_documentation"
+      android:drawableBottom="@drawable/avd"/>
+```
+
+## 8 Transition
 
 http://blog.jobbole.com/62601/
 http://www.open-open.com/lib/view/open1477879867267.html

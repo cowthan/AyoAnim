@@ -6,6 +6,9 @@ import org.ayo.robot.anim.ease.DemoEaseActivity;
 import org.ayo.robot.anim.ease.EvaluatorActivity;
 import org.ayo.robot.anim.ease.InterpolatorActivity;
 import org.ayo.robot.anim.frame.DemoFrameAnimate;
+import org.ayo.robot.anim.material.DemoCircularReveal;
+import org.ayo.robot.anim.material.DemoStateList;
+import org.ayo.robot.anim.material.DemoTouchFeedback;
 import org.ayo.robot.anim.path.PathAnimDemo1;
 import org.ayo.robot.anim.path.PathAnimDemo2;
 import org.ayo.robot.anim.propertyanim.AnimatorCreateActivity;
@@ -18,6 +21,8 @@ import org.ayo.robot.anim.propertyanim.DemoScaleXY;
 import org.ayo.robot.anim.propertyanim.DemoScaleY;
 import org.ayo.robot.anim.propertyanim.DemoTranslateX;
 import org.ayo.robot.anim.propertyanim.DemoTranslateY;
+import org.ayo.robot.anim.svg.DemoSvgDraw;
+import org.ayo.robot.anim.svg_vectordrawable.DemoVector;
 import org.ayo.robot.anim.transition.ActivityTransition;
 import org.ayo.robot.anim.transition.DemoTransitionPage1;
 import org.ayo.robot.anim.transition.DemoTransitionPage3;
@@ -159,7 +164,7 @@ public class MainActivity extends MainPagerActivity {
         }
 
         ///--------------------------菜单1：Transition
-        m3 = new Menu("Transition动画", R.drawable.find_normal, R.drawable.find_pressed);
+        m3 = new Menu("Material动画", R.drawable.find_normal, R.drawable.find_pressed);
         menus.add(m3);
         {
             MenuItem menuItem = new MenuItem("Transition", R.drawable.weixin_normal, R.drawable.weixin_pressed);
@@ -170,6 +175,20 @@ public class MainActivity extends MainPagerActivity {
                 menuItem.addLeaf(new Leaf("来自ApiDemo的demo", "", ActivityTransition.class, 1));
             }
 
+            menuItem = new MenuItem("SVG--VectorDrawable", R.drawable.weixin_normal, R.drawable.weixin_pressed);
+            m3.addMenuItem(menuItem);
+            {
+                menuItem.addLeaf(new Leaf("绘制svg", "", DemoSvgDraw.class));
+                menuItem.addLeaf(new Leaf("Animate Vector Drawables：可绘矢量动画", "", DemoVector.class, 1));
+            }
+            menuItem = new MenuItem("其他", R.drawable.weixin_normal, R.drawable.weixin_pressed);
+            m3.addMenuItem(menuItem);
+            {
+                menuItem.addLeaf(new Leaf("触摸反馈：Touch feedback", "", DemoTouchFeedback.class));
+                menuItem.addLeaf(new Leaf("Reveal effect", "", DemoCircularReveal.class));
+                menuItem.addLeaf(new Leaf("Curved motion：曲线运动", "", PathAnimDemo2.class));
+                menuItem.addLeaf(new Leaf("View state changes：视图状态改变", "", DemoStateList.class));
+            }
         }
 
 
