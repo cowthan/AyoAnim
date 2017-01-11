@@ -9,7 +9,7 @@
     android:textSize="64sp"
     android:textColor="@color/heart_text"
     android:paddingLeft="16dp"
-    android:button="@drawable/fill_in_heart"
+    android:button="@mipmap/ic_launcher"
     android:background="#ffffff"
     />
 <!-- Remove android:background="@null" for ripple effects -->

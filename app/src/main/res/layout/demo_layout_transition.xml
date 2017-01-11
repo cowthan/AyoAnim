@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:background="@drawable/round_rect"
+        android:padding="10dp"
+        android:animateLayoutChanges="true"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/test6"
+            android:scaleType="centerCrop"
+            />
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/test5"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            />
+        <ImageView
+            android:id="@+id/iv3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/test5"
+            android:scaleType="centerCrop"
+            android:layout_gravity="right|top"
+            android:layout_margin="10dp"
+            /><ImageView
+        android:id="@+id/iv4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/test5"
+        android:scaleType="centerCrop"
+        android:layout_gravity="left|top"
+        android:layout_margin="10dp"
+        />
+        <FrameLayout
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+            android:background="@drawable/round_rect"
+        /> <FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_rect"
+        android:layout_gravity="right|top"
+        android:layout_margin="10dp"
+        /><FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_rect"
+        android:layout_gravity="left|top"
+        android:layout_margin="10dp"
+        />
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_rect"
+        />
+
+    <LinearLayout
+        android:id="@+id/wrapper_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_rect"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:text="addView" />
+        <Button
+            android:id="@+id/btn_remove"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:text="removeView" />
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:text="changeBound" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

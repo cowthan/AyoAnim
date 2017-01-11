@@ -21,7 +21,7 @@ public class SplashActivity extends AyoActivity {
             public void run() {
                 Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.ayo_fade_in, R.anim.ayo_fade_out);
+                overridePendingTransition(R.anim.ayoa_fade_in, R.anim.ayoa_fade_out);
                 finish();
             }
         }, 1500);

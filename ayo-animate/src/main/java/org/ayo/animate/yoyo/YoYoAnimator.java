@@ -29,6 +29,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.graphics.Path;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.CycleInterpolator;
@@ -53,13 +54,20 @@ public abstract class YoYoAnimator {
     protected View mTarget;//动画作用的对象
     protected AnimatorSet mAnimatorSet = new AnimatorSet();//动画集合
 
+    protected void extractArgs(Object...args){}
     protected abstract void prepare();//动画准备阶段
+
+    public Animator getRawAnimator(){
+        prepare();
+        return mAnimatorSet;
+    }
 
     /**
      * start to animate
      */
-    public void start() {
+    public void start(Object...args) {
         reset();
+        extractArgs(args);
         prepare();
         if (mRepeat != 0) {
             for (Animator animator : mAnimatorSet.getChildAnimations()) {
@@ -468,6 +476,38 @@ public abstract class YoYoAnimator {
                     ObjectAnimator.ofFloat(mTarget, "alpha", 0, 1));
         }
 
+    }
+
+    public static class Slide extends YoYoAnimator{
+        /**
+         * 接收-1到1的值，表示相对于自己的宽度w而言，-1为左移w，1为右移w
+         */
+        private float startX = 0f, endX = 1f;
+        private float startY = 0f, endY = 1f;
+
+        @Override
+        protected void extractArgs(Object...args) {
+            if(args == null || args.length == 0) return;
+            if(args.length == 1 && (args[0] instanceof Path)){
+
+            }else if(args.length == 4){
+                startX = (float) args[0];
+                endX = (float) args[1];
+                startY = (float) args[2];
+                endY = (float) args[3];
+
+            }
+        }
+
+        @Override
+        public void prepare() {
+            int w = mTarget.getWidth();
+            int h = mTarget.getHeight();
+            mAnimatorSet.playTogether(
+                    ObjectAnimator.ofFloat(mTarget, "translationX", startX*w, endX*w),
+                    ObjectAnimator.ofFloat(mTarget, "translationY", startY*h, endY*h)
+            );
+        }
     }
 
     public static class SlideInDown extends YoYoAnimator {

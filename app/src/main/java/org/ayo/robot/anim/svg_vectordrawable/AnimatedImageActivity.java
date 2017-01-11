@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import org.ayo.robot.anim.App;
 import org.ayo.robot.anim.R;
 import org.ayo.sample.menu.attacher.ActivityAttacher;
+import org.ayo.sample.menu.notify.Toaster;
 
 public abstract class AnimatedImageActivity extends ActivityAttacher {
   private ImageView imageView;
@@ -26,6 +28,10 @@ public abstract class AnimatedImageActivity extends ActivityAttacher {
   }
 
   private void animate() {
+    if(!App.supportMaterial()){
+      Toaster.toastShort("系统版本低于5.0，不支持AnimatedVectorDrawable");
+      return;
+    }
     Drawable drawable = imageView.getDrawable();
     if (drawable instanceof Animatable) {
       ((Animatable) drawable).start();

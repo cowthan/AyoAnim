@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.ayo.robot.anim.App;
 import org.ayo.robot.anim.R;
 import org.ayo.sample.menu.attacher.ActivityAttacher;
+import org.ayo.sample.menu.notify.Toaster;
 
 public class ExampleActivity extends ActivityAttacher {
   private ViewGroup container;
@@ -44,6 +46,10 @@ public class ExampleActivity extends ActivityAttacher {
   }
 
   private void animateDrawables(View view) {
+    if(!App.supportMaterial()){
+      Toaster.toastShort("系统版本低于5.0，不支持AnimatedVectorDrawable");
+      return;
+    }
     if (!(view instanceof TextView)) {
       return;
     }

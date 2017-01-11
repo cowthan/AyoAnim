@@ -25,7 +25,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ActivityTransitionTheme" parent="android:Theme.Material" tools:targetApi="lollipop">
+    <style name="ActivityTransitionTheme" parent="Theme.AppCompat.Light.NoActionBar" tools:targetApi="lollipop">
         <item name="android:windowEnterTransition">@transition/explode</item>
         <item name="android:windowExitTransition">@transition/explode</item>
         <item name="android:windowSharedElementEnterTransition">@transition/move_image</item>

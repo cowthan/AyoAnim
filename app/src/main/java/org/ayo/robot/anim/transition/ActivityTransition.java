@@ -15,7 +15,6 @@
  */
 package org.ayo.robot.anim.transition;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.SharedElementCallback;
 import android.content.Intent;
@@ -23,9 +22,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import org.ayo.robot.anim.App;
 import org.ayo.robot.anim.R;
 
 import java.util.List;
@@ -35,7 +36,7 @@ import java.util.Map;
  *
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class ActivityTransition extends Activity {
+public class ActivityTransition extends AppCompatActivity {
 
     private static final String TAG = "ActivityTransition";
 
@@ -110,7 +111,7 @@ public class ActivityTransition extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawable(new ColorDrawable(randomColor()));
         setContentView(R.layout.image_block);
-        setupHero();
+        if(App.supportMaterial()) setupHero();
     }
 
     /**
@@ -132,12 +133,19 @@ public class ActivityTransition extends Activity {
     }
 
     public void clicked(View v) {
-        mHero = (ImageView) v;
-        Intent intent = new Intent(this, ActivityTransitionDetails.class);
-        intent.putExtra(KEY_ID, v.getTransitionName());
-        ActivityOptions activityOptions
-                = ActivityOptions.makeSceneTransitionAnimation(this, mHero, "hero");
-        startActivity(intent, activityOptions.toBundle());
+
+        if (App.supportMaterial()) {
+            mHero = (ImageView) v;
+            Intent intent = new Intent(this, ActivityTransitionDetails.class);
+            intent.putExtra(KEY_ID, v.getTransitionName());
+            ActivityOptions activityOptions
+                    = ActivityOptions.makeSceneTransitionAnimation(this, mHero, "hero");
+            startActivity(intent, activityOptions.toBundle());
+        }else{
+            Intent intent = new Intent(this, ActivityTransitionDetails.class);
+            startActivity(intent);
+        }
+
     }
 
     private static int randomColor() {

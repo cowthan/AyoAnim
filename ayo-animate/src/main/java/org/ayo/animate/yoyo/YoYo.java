@@ -122,6 +122,15 @@ public class YoYo {
             return new YoYoString(this.animator);
         }
 
+        public Animator getAnimator(View target) {
+            this.target = target;
+            animator.setTarget(target)
+                    .setDuration(duration)
+                    .setInterpolator(interpolator)
+                    .setStartDelay(delay).setRest(reset).setRepeat(repeat);
+            return animator.getRawAnimator();
+        }
+
         //builder内部的start方法，将animatorset启动
         private void start() {
             animator.setTarget(target)

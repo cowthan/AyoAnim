@@ -1240,3 +1240,51 @@ ActivityOptions option = ActivityOptions.makeSceneTransitionAnimation(MainActivi
 
 看图：  
 ![](./img/transition2.gif)
+
+
+## 9 setLayoutAnimation：布局动画
+
+一看是Animation,就知道是tween动画
+
+```
+Animation a = getLayoutAnimation();
+a.setDuration(1000);
+LayoutAnimationController lc = new LayoutAnimationController(a);
+wrapper.setLayoutAnimation(lc);
+```
+
+只能控制addView，管不了removeView，也管不了visibility变化，也管不了子控件布局位置变化
+
+能用于所有类型的ViewGroup
+
+## 10 Transition框架
+
+自Android 4.4（KitKat）起，Android加入了Android Transition框架，
+本例使用了一些5.0加入的API，SDK版本请使用21
+
+http://blog.jobbole.com/62601/
+
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0322/2631.html
+
+http://jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0113/2310.html
+
+
+## 9 LayoutTransition：布局动画
+
+4.0引入，这个不用考虑兼容问题了，都能用
+
+使用：
+- 在ViewGroup的布局中指定：android:animateLayoutChanges="true"，可以激活默认动画
+- 也可以在如下代码设置：
+```
+ViewGroup  container = (ViewGroup) findViewById(R.id.container);
+LayoutTransition transition = new LayoutTransition();
+container.setLayoutTransition(transition);
+```
+
+激活时机：
+- addView
+- removeView
+- childView的Visibility变化
+- childView在父布局位置的变化
+

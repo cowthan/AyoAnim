@@ -91,6 +91,8 @@ public enum Techniques {
     RotateOutUpLeft(YoYoAnimator.RotateOutUpLeft.class), ///out
     RotateOutUpRight(YoYoAnimator.RotateOutUpRight.class), ///out
 
+    Slide(YoYoAnimator.Slide.class),
+
     SlideInLeft(YoYoAnimator.SlideInLeft.class),
     SlideInRight(YoYoAnimator.SlideInRight.class),
     SlideInUp(YoYoAnimator.SlideInUp.class),

@@ -6,6 +6,14 @@ import org.ayo.robot.anim.ease.DemoEaseActivity;
 import org.ayo.robot.anim.ease.EvaluatorActivity;
 import org.ayo.robot.anim.ease.InterpolatorActivity;
 import org.ayo.robot.anim.frame.DemoFrameAnimate;
+import org.ayo.robot.anim.layout.DemoLayoutTransition;
+import org.ayo.robot.anim.layout.DemoLayoutTransition2;
+import org.ayo.robot.anim.layout_tween.DemoLayoutAnimation_fade_in;
+import org.ayo.robot.anim.layout_tween.DemoLayoutAnimation_fade_out;
+import org.ayo.robot.anim.layout_tween.DemoLayoutAnimation_scale_in;
+import org.ayo.robot.anim.layout_tween.DemoLayoutAnimation_scale_out;
+import org.ayo.robot.anim.layout_tween.DemoLayoutAnimation_slide_in;
+import org.ayo.robot.anim.layout_tween.DemoLayoutAnimation_slide_out;
 import org.ayo.robot.anim.material.DemoCircularReveal;
 import org.ayo.robot.anim.material.DemoStateList;
 import org.ayo.robot.anim.material.DemoTouchFeedback;
@@ -26,6 +34,21 @@ import org.ayo.robot.anim.svg_vectordrawable.DemoVector;
 import org.ayo.robot.anim.transition.ActivityTransition;
 import org.ayo.robot.anim.transition.DemoTransitionPage1;
 import org.ayo.robot.anim.transition.DemoTransitionPage3;
+import org.ayo.robot.anim.viewanim.fade_in;
+import org.ayo.robot.anim.viewanim.fade_out;
+import org.ayo.robot.anim.viewanim.hold;
+import org.ayo.robot.anim.viewanim.rotate;
+import org.ayo.robot.anim.viewanim.rotate_3d;
+import org.ayo.robot.anim.viewanim.scale_in;
+import org.ayo.robot.anim.viewanim.scale_out;
+import org.ayo.robot.anim.viewanim.slide_in_from_bottom;
+import org.ayo.robot.anim.viewanim.slide_in_from_left;
+import org.ayo.robot.anim.viewanim.slide_in_from_right;
+import org.ayo.robot.anim.viewanim.slide_in_from_top;
+import org.ayo.robot.anim.viewanim.slide_out_to_bottom;
+import org.ayo.robot.anim.viewanim.slide_out_to_left;
+import org.ayo.robot.anim.viewanim.slide_out_to_right;
+import org.ayo.robot.anim.viewanim.slide_out_to_top;
 import org.ayo.robot.anim.yoyo.DemoYoyoActivity;
 import org.ayo.sample.menu.Leaf;
 import org.ayo.sample.menu.MainPagerActivity;
@@ -97,12 +120,21 @@ public class MainActivity extends MainPagerActivity {
             m1.addMenuItem(menuItem1);
             {
                 menuItem1.addLeaf(new Leaf("帧动画", "", DemoFrameAnimate.class));
-                menuItem1.addLeaf(new Leaf("Translate", "", null));
-                menuItem1.addLeaf(new Leaf("Scale", "", null));
-                menuItem1.addLeaf(new Leaf("Rotate", "", null));
-                menuItem1.addLeaf(new Leaf("Alpha", "", null));
-                menuItem1.addLeaf(new Leaf("Rotate3D", "", null));
-                menuItem1.addLeaf(new Leaf("通过Matrix自定义动画", "", null));
+                menuItem1.addLeaf(new Leaf("fade_in", "", fade_in.class));
+                menuItem1.addLeaf(new Leaf("fade_out", "", fade_out.class));
+                menuItem1.addLeaf(new Leaf("scale_in", "", scale_in.class));
+                menuItem1.addLeaf(new Leaf("scale_out", "", scale_out.class));
+                menuItem1.addLeaf(new Leaf("rotate", "", rotate.class));
+                menuItem1.addLeaf(new Leaf("slide_in_from_bottom", "", slide_in_from_bottom.class));
+                menuItem1.addLeaf(new Leaf("slide_in_from_top", "", slide_in_from_top.class));
+                menuItem1.addLeaf(new Leaf("slide_in_from_left", "", slide_in_from_left.class));
+                menuItem1.addLeaf(new Leaf("slide_in_from_right", "", slide_in_from_right.class));
+                menuItem1.addLeaf(new Leaf("slide_out_to_bottom", "", slide_out_to_bottom.class));
+                menuItem1.addLeaf(new Leaf("slide_out_to_top", "", slide_out_to_top.class));
+                menuItem1.addLeaf(new Leaf("slide_out_to_left", "", slide_out_to_left.class));
+                menuItem1.addLeaf(new Leaf("slide_out_to_right", "", slide_out_to_right.class));
+                menuItem1.addLeaf(new Leaf("hold--不动", "", hold.class));
+                menuItem1.addLeaf(new Leaf("通过Matrix自定义动画--Rotate3D", "", rotate_3d.class));
                 menuItem1.addLeaf(new Leaf("动画组合", "", null));
                 menuItem1.addLeaf(new Leaf("动画编辑器", "", null));
             }
@@ -110,10 +142,13 @@ public class MainActivity extends MainPagerActivity {
             MenuItem menuItem2 = new MenuItem("Layout动画", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m1.addMenuItem(menuItem2);
             {
-                menuItem2.addLeaf(new Leaf("示例", "", null));
-                menuItem2.addLeaf(new Leaf("ListView", "", null));
-                menuItem2.addLeaf(new Leaf("RecyclerView", "", null));
-                menuItem2.addLeaf(new Leaf("Framelayout", "", null));
+                menuItem2.addLeaf(new Leaf("setLayoutAnimation", "", DemoLayoutAnimation_fade_in.class));
+                menuItem2.addLeaf(new Leaf("fade_in", "", DemoLayoutAnimation_fade_in.class));
+                menuItem2.addLeaf(new Leaf("fade_out", "", DemoLayoutAnimation_fade_out.class));
+                menuItem2.addLeaf(new Leaf("scale_in", "", DemoLayoutAnimation_scale_in.class));
+                menuItem2.addLeaf(new Leaf("scale_out", "", DemoLayoutAnimation_scale_out.class));
+                menuItem2.addLeaf(new Leaf("slide_in", "", DemoLayoutAnimation_slide_in.class));
+                menuItem2.addLeaf(new Leaf("slide_in", "", DemoLayoutAnimation_slide_out.class));
             }
 
             menuItem2 = new MenuItem("Activity切换", R.drawable.weixin_normal, R.drawable.weixin_pressed);
@@ -125,10 +160,7 @@ public class MainActivity extends MainPagerActivity {
             menuItem2 = new MenuItem("Fragment切换", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m1.addMenuItem(menuItem2);
             {
-                menuItem2.addLeaf(new Leaf("clip rect", "", null));
-                menuItem2.addLeaf(new Leaf("clip path", "", null));
-                menuItem2.addLeaf(new Leaf("clip region：已被废弃，因为不支持matrix", "", null));
-                menuItem2.addLeaf(new Leaf("clip region op：两个剪切区域叠加的不同效果", "", null));
+                menuItem2.addLeaf(new Leaf("有啥", "", null));
             }
         }
 
@@ -160,7 +192,6 @@ public class MainActivity extends MainPagerActivity {
                 menuItem.addLeaf(new Leaf("入门2", "", PathAnimDemo2.class));
                 menuItem.addLeaf(new Leaf("Point的估值器", "", null));
             }
-
         }
 
         ///--------------------------菜单1：Transition
@@ -175,10 +206,17 @@ public class MainActivity extends MainPagerActivity {
                 menuItem.addLeaf(new Leaf("来自ApiDemo的demo", "", ActivityTransition.class, 1));
             }
 
-            menuItem = new MenuItem("SVG--VectorDrawable", R.drawable.weixin_normal, R.drawable.weixin_pressed);
+            menuItem = new MenuItem("LayoutTransition", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m3.addMenuItem(menuItem);
             {
-                menuItem.addLeaf(new Leaf("绘制svg", "", DemoSvgDraw.class));
+                menuItem.addLeaf(new Leaf("setTransition--demo 1", "", DemoLayoutTransition.class));
+                menuItem.addLeaf(new Leaf("setTransition--demo 2", "", DemoLayoutTransition2.class));
+            }
+
+            menuItem = new MenuItem("SVG", R.drawable.weixin_normal, R.drawable.weixin_pressed);
+            m3.addMenuItem(menuItem);
+            {
+                menuItem.addLeaf(new Leaf("绘制svg---非Material--svg to Path", "", DemoSvgDraw.class));
                 menuItem.addLeaf(new Leaf("Animate Vector Drawables：可绘矢量动画", "", DemoVector.class, 1));
             }
             menuItem = new MenuItem("其他", R.drawable.weixin_normal, R.drawable.weixin_pressed);

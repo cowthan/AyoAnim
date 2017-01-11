@@ -128,7 +128,7 @@ public class DemoYoyoActivity extends AyoActivity {
                 .listen(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationCancel(Animator animation) {
-                        //Toast.makeText(DemoViewAnimActivity.this, "canceled", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(slide_in_from_bottom.this, "canceled", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .playOn(mTarget2);

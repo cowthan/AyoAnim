@@ -27,7 +27,6 @@ public class PathAnimDemo2 extends AyoActivityAttacher {
         setContentView(R.layout.ac_demo_path_anim2);
 
         final PathFrameLayout pathLayout = (PathFrameLayout) findViewById(R.id.pathLayout);
-
         ball = pathLayout.getChildAt(0);
 
         pathLayout.setOnPathDrawFinished(new PathFrameLayout.OnPathDrawFinished() {

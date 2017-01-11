@@ -84,6 +84,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile configer['lib_appcompat']
+    compile configer['lib_recyclerview']
     compile configer['lib_design']
     compile(name:'ayo-menu-lib-release', ext:'aar')
 

@@ -130,6 +130,7 @@ public abstract class DemoBase extends AyoActivity {
         mTarget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                org.ayo.sample.menu.notify.Toaster.toastShort("stop");
                 stopAnim();
             }
         });
@@ -227,6 +228,7 @@ public abstract class DemoBase extends AyoActivity {
         findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                org.ayo.sample.menu.notify.Toaster.toastShort("stop");
                 stopAnim();
             }
         });
@@ -368,18 +370,18 @@ public abstract class DemoBase extends AyoActivity {
     private Animator o1, o2, o3, o4;
 
     private Animator apply(View v){
-        Animator o1 = createAnimator(v);
+        Animator o = createAnimator(v);
         v.setPivotX(getCustomPivotX()/100 * v.getWidth());
         v.setPivotY(getCustomPivotY()/100 * v.getHeight());
-        o1.setDuration(getDuration());
-        o1.setInterpolator(getEasingFunction());
-        if(o1 instanceof ObjectAnimator){
-            ObjectAnimator o = (ObjectAnimator) o1;
-            o.setRepeatCount(repeatCount);
-            o.setRepeatMode(repeatMode);
+        o.setDuration(getDuration());
+        o.setInterpolator(getEasingFunction());
+        if(o instanceof ObjectAnimator){
+            ObjectAnimator oo = (ObjectAnimator) o;
+            oo.setRepeatCount(repeatCount);
+            oo.setRepeatMode(repeatMode);
         }
-        o1.start();
-        return o1;
+        o.start();
+        return o;
     }
 
     protected abstract Animator createAnimator(View target);

@@ -15,7 +15,6 @@
  */
 package org.ayo.robot.anim.transition;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -23,9 +22,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import org.ayo.robot.anim.App;
 import org.ayo.robot.anim.R;
 
 
@@ -33,7 +34,7 @@ import org.ayo.robot.anim.R;
  *
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class ActivityTransitionDetails extends Activity {
+public class ActivityTransitionDetails extends AppCompatActivity {
 
     private static final String TAG = "ActivityTransitionDetails";
 
@@ -64,11 +65,17 @@ public class ActivityTransitionDetails extends Activity {
     }
 
     public void clicked(View v) {
-        Intent intent = new Intent(this, ActivityTransition.class);
-        intent.putExtra(KEY_ID, mName);
-        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this,
-                v, "hero");
-        startActivity(intent, activityOptions.toBundle());
+        if(App.supportMaterial()){
+            Intent intent = new Intent(this, ActivityTransition.class);
+            intent.putExtra(KEY_ID, mName);
+            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this,
+                    v, "hero");
+            startActivity(intent, activityOptions.toBundle());
+        }else{
+            Intent intent = new Intent(this, ActivityTransition.class);
+            startActivity(intent);
+        }
+
     }
 
     private static int randomColor() {

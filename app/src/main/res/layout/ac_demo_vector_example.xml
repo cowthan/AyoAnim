@@ -18,17 +18,17 @@
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/margin"
       android:text="@string/example_from_documentation"
-      android:drawableBottom="@drawable/avd"/>
+      android:drawableBottom="@mipmap/ic_launcher"/>
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/margin"
       android:text="@string/rotation_only"
-      android:drawableBottom="@drawable/avd_rotation_only"/>
+      android:drawableBottom="@mipmap/ic_launcher"/>
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/margin"
       android:text="@string/path_morph_only"
-      android:drawableBottom="@drawable/avd_path_morph_only"/>
+      android:drawableBottom="@mipmap/ic_launcher"/>
 </LinearLayout>
