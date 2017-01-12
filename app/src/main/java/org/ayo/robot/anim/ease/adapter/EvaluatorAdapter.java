@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import org.ayo.animate.ease.Functions;
 import org.ayo.robot.anim.R;
-import org.ayo.robot.anim.Toaster;
 import org.ayo.robot.anim.ease.EvaluatorActivity;
+import org.ayo.sample.menu.notify.ToasterDebug;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +62,7 @@ public class EvaluatorAdapter extends BaseAdapter {
                 if(mActivity instanceof EvaluatorActivity){
                     ((EvaluatorActivity)mActivity).onSubmit(evaluator);
                 }else{
-                    Toaster.toastShort("不支持for result模式");
+                    ToasterDebug.toastShort("不支持for result模式");
                 }
             }
         });

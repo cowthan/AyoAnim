@@ -4,37 +4,21 @@ import android.animation.ValueAnimator;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
-import org.ayo.robot.anim.AyoActivityAttacher;
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.R;
 
 /**
  * Created by Administrator on 2016/12/27.
  */
 
-public class PathAnimDemo1 extends AyoActivityAttacher {
+public class PathAnimDemo1 extends BasePage {
 
     View ball;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_demo_path_anim);
-
-        final PathFrameLayout pathLayout = (PathFrameLayout) findViewById(R.id.pathLayout);
-
-        ball = findViewById(R.id.ball);
-
-        pathLayout.setOnPathDrawFinished(new PathFrameLayout.OnPathDrawFinished() {
-            @Override
-            public void onPathCreated(Path path) {
-                startAnim(ball, path);
-            }
-        });
-    }
 
     private static void startAnim(final View v, Path path){
         final PathMeasure mPathMeasure = new PathMeasure(path, false);
@@ -64,4 +48,32 @@ public class PathAnimDemo1 extends AyoActivityAttacher {
         v.setLayoutParams(lp);
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.ac_demo_path_anim;
+    }
+
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
+        final PathFrameLayout pathLayout = (PathFrameLayout) findViewById(R.id.pathLayout);
+
+        ball = findViewById(R.id.ball);
+
+        pathLayout.setOnPathDrawFinished(new PathFrameLayout.OnPathDrawFinished() {
+            @Override
+            public void onPathCreated(Path path) {
+                startAnim(ball, path);
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy2() {
+
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
+    }
 }

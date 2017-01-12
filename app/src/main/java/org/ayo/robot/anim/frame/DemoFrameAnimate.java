@@ -2,28 +2,31 @@ package org.ayo.robot.anim.frame;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import org.ayo.robot.anim.AyoActivityAttacher;
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.R;
 
 /**
  * Created by Administrator on 2016/12/27.
  */
 
-public class DemoFrameAnimate extends AyoActivityAttacher {
+public class DemoFrameAnimate extends BasePage {
 
     private ImageView animationIV;
     private Button buttonA, buttonB, buttonC;
     private AnimationDrawable animationDrawable;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_demo_frame_anim);
+    protected int getLayoutId() {
+        return R.layout.ac_demo_frame_anim;
+    }
 
-
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
         animationIV = (ImageView) findViewById(R.id.animationIV);
         buttonA = (Button) findViewById(R.id.buttonA);
         buttonB = (Button) findViewById(R.id.buttonB);
@@ -62,5 +65,15 @@ public class DemoFrameAnimate extends AyoActivityAttacher {
                 animationDrawable.start();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy2() {
+
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
     }
 }

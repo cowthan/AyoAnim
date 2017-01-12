@@ -16,9 +16,9 @@ import android.widget.ListView;
 
 import org.ayo.animate.ease.Functions;
 import org.ayo.robot.anim.R;
-import org.ayo.robot.anim.Toaster;
 import org.ayo.robot.anim.ease.adapter.EvaluatorAdapter;
 import org.ayo.robot.anim.ease.view.EvaluatorView;
+import org.ayo.sample.menu.notify.ToasterDebug;
 
 
 /**
@@ -86,7 +86,7 @@ public class EvaluatorActivity extends AppCompatActivity {
     }
 
     public void onSubmit(TypeEvaluator evaluator){
-        Toaster.toastShort(evaluator.getClass().getSimpleName());
+        ToasterDebug.toastShort(evaluator.getClass().getSimpleName());
     }
 
     public static float dipToPixels(Context context, float dipValue) {

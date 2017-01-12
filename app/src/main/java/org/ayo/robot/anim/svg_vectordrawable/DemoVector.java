@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import org.ayo.component.Master;
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.R;
-import org.ayo.sample.menu.attacher.ActivityAttacher;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +37,7 @@ public class DemoVector extends ListActivity {
       @Override
       public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         Demo demo = demos.get(position);
-        ActivityAttacher.startActivity(DemoVector.this, demo.activityClass, null);
+        Master.startPage(DemoVector.this, demo.activityClass, null);
       }
     });
 
@@ -44,10 +45,10 @@ public class DemoVector extends ListActivity {
   }
 
   public static class Demo {
-    public final Class<? extends ActivityAttacher> activityClass;
+    public final Class<? extends BasePage> activityClass;
     public final String title;
 
-    public Demo(Context context, Class<?extends ActivityAttacher> activityClass, int titleId) {
+    public Demo(Context context, Class<?extends BasePage> activityClass, int titleId) {
       this.activityClass = activityClass;
       this.title = context.getString(titleId);
     }

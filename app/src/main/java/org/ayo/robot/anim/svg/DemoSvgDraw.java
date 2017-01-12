@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -13,10 +14,10 @@ import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.R;
-import org.ayo.sample.menu.attacher.ActivityAttacher;
 
-public class DemoSvgDraw extends ActivityAttacher {
+public class DemoSvgDraw extends BasePage {
 
     private Handler mHandler = new Handler();
 
@@ -25,10 +26,17 @@ public class DemoSvgDraw extends ActivityAttacher {
     private ImageView mSubtitleView;
     private float mInitialLogoOffset;
 
+    private void animateLogo() {
+        mAnimatedSvgView.start();
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.demo_svg_draw);
+    protected int getLayoutId() {
+        return R.layout.demo_svg_draw;
+    }
+
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
 
         mInitialLogoOffset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 49,
                 getResources().getDisplayMetrics());
@@ -44,16 +52,16 @@ public class DemoSvgDraw extends ActivityAttacher {
         // ARGB values for each glyph
         mAnimatedSvgView.setFillPaints(
                 new int[] {
-                    210
+                        210
                 },
                 new int[] {
-                    00
+                        00
                 },
                 new int[] {
-                    180
+                        180
                 },
                 new int[] {
-                    00
+                        00
                 });
 
         int traceColor = Color.argb(255, 0, 200, 100);
@@ -96,15 +104,6 @@ public class DemoSvgDraw extends ActivityAttacher {
                 }
             }
         });
-    }
-
-    private void animateLogo() {
-        mAnimatedSvgView.start();
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
 
         mHandler.postDelayed(new Runnable() {
             @Override
@@ -114,4 +113,13 @@ public class DemoSvgDraw extends ActivityAttacher {
         }, 1000);
     }
 
+    @Override
+    protected void onDestroy2() {
+
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
+    }
 }

@@ -2,23 +2,28 @@ package org.ayo.robot.anim.material;
 
 import android.animation.Animator;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import org.ayo.robot.anim.AyoActivityAttacher;
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.R;
-import org.ayo.sample.menu.notify.Toaster;
+import org.ayo.sample.menu.notify.ToasterDebug;
 
 /**
  */
 
-public class DemoCircularReveal extends AyoActivityAttacher {
+public class DemoCircularReveal extends BasePage {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_demo_l_circular_reveal);
+    protected int getLayoutId() {
+        return R.layout.ac_demo_l_circular_reveal;
+    }
+
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
 
         final View btn1 = findViewById(R.id.btn1);
         final View btn2 = findViewById(R.id.btn2);
@@ -38,7 +43,7 @@ public class DemoCircularReveal extends AyoActivityAttacher {
                     animator.setDuration(2000);
                     animator.start();
                 }else{
-                    Toaster.toastShort("只支持5.0及其以上系统");
+                    ToasterDebug.toastShort("只支持5.0及其以上系统");
                 }
 
             }
@@ -61,10 +66,20 @@ public class DemoCircularReveal extends AyoActivityAttacher {
                     animator.setDuration(2000);
                     animator.start();
                 }else{
-                    Toaster.toastShort("只支持5.0及其以上系统");
+                    ToasterDebug.toastShort("只支持5.0及其以上系统");
                 }
 
             }
         });
+    }
+
+    @Override
+    protected void onDestroy2() {
+
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
     }
 }

@@ -6,74 +6,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import org.ayo.robot.anim.AyoActivityAttacher;
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.DemoBase;
 import org.ayo.robot.anim.R;
 import org.ayo.robot.anim.propertyanim.model.AnimatorInfo;
 import org.ayo.robot.anim.propertyanim.model.AnimatorSetInfo;
-import org.ayo.sample.menu.notify.Toaster;
+import org.ayo.sample.menu.notify.ToasterDebug;
 
 import java.util.ArrayList;
 
-public class AnimatorCreateActivity extends AyoActivityAttacher {
+public class AnimatorCreateActivity extends BasePage {
 
     private View mTarget,mTarget2;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.demo_animator_create);
-
-        mTarget = findViewById(R.id.hello_world);
-        mTarget2 = findViewById(R.id.hello_world2);
-
-        findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startAnim();
-            }
-        });
-
-        findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                stopAnim();
-            }
-        });
-
-        findViewById(R.id.btn_setting).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                add();
-            }
-        });
-        findViewById(R.id.btn_reset).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                reset();
-            }
-        });
-
-        animatorSetInfo = new AnimatorSetInfo();
-        animatorSetInfo.playSequencial = AnimatorSetInfo.PLAY_TOGETHER;
-        animatorSetInfo.animators = new ArrayList<>();
-
-        RadioGroup rg_play = findViewById(R.id.rg_play);
-        rg_play.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.rb_together){
-                    animatorSetInfo.playSequencial = AnimatorSetInfo.PLAY_TOGETHER;
-                }else if(checkedId == R.id.rb_seq){
-                    animatorSetInfo.playSequencial = AnimatorSetInfo.PLAY_SEQUENCIAL;
-                }
-            }
-        });
-    }
 
     private void add(){
         reset();
@@ -99,7 +48,7 @@ public class AnimatorCreateActivity extends AyoActivityAttacher {
 
     protected void startAnim() {
         if(animatorSetInfo == null || animatorSetInfo.animators == null || animatorSetInfo.animators.size() == 0){
-            Toaster.toastShort("请先创建动画");
+            ToasterDebug.toastShort("请先创建动画");
             return;
         }
         o1 = animatorSetInfo.parse(mTarget);
@@ -145,15 +94,80 @@ public class AnimatorCreateActivity extends AyoActivityAttacher {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(DemoBase.isMyResult(requestCode)){
             AnimatorInfo a = DemoBase.getResult(data);
             if(a != null){
                 animatorSetInfo.animators.add(a);
-                TextView tv_info = findViewById(R.id.tv_info);
+                TextView tv_info = id(R.id.tv_info);
                 tv_info.setText(tv_info.getText() + "\n" + a.toString());
             }
         }
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.demo_animator_create;
+    }
+
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
+
+        mTarget = findViewById(R.id.hello_world);
+        mTarget2 = findViewById(R.id.hello_world2);
+
+        findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startAnim();
+            }
+        });
+
+        findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                stopAnim();
+            }
+        });
+
+        findViewById(R.id.btn_setting).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                add();
+            }
+        });
+        findViewById(R.id.btn_reset).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                reset();
+            }
+        });
+
+        animatorSetInfo = new AnimatorSetInfo();
+        animatorSetInfo.playSequencial = AnimatorSetInfo.PLAY_TOGETHER;
+        animatorSetInfo.animators = new ArrayList<>();
+
+        RadioGroup rg_play = id(R.id.rg_play);
+        rg_play.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.rb_together){
+                    animatorSetInfo.playSequencial = AnimatorSetInfo.PLAY_TOGETHER;
+                }else if(checkedId == R.id.rb_seq){
+                    animatorSetInfo.playSequencial = AnimatorSetInfo.PLAY_SEQUENCIAL;
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy2() {
+
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
     }
 }

@@ -8,6 +8,7 @@ import android.os.Build;
 import android.view.Window;
 
 import org.ayo.animate.AyoAnim;
+import org.ayo.sample.menu.notify.ToasterDebug;
 
 /**
  * Created by cowthan on 2016/1/24.
@@ -21,7 +22,7 @@ public class App extends Application{
         super.onCreate();
         app = this;
         AyoAnim.init(this);
-        org.ayo.sample.menu.notify.Toaster.init(this);
+        ToasterDebug.init(this);
     }
 
     public static boolean supportMaterial(){
@@ -34,7 +35,7 @@ public class App extends Application{
             ActivityOptions activityOptions  = ActivityOptions.makeSceneTransitionAnimation(from);
             from.startActivity(intent, activityOptions.toBundle());
         }else{
-            org.ayo.sample.menu.notify.Toaster.toastShort("系统版本低于5.0，不支持Transition");
+            ToasterDebug.toastShort("系统版本低于5.0，不支持Transition");
             Intent intent = new Intent(from, to);
             from.startActivity(intent);
         }

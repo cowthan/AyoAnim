@@ -2,6 +2,7 @@ package org.ayo.robot.anim;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
@@ -13,8 +14,9 @@ import org.ayo.animate.ease.EasingFunction;
 import org.ayo.animate.ease.Functions;
 import org.ayo.robot.anim.ease.EvaluatorActivity;
 import org.ayo.robot.anim.propertyanim.model.AnimatorInfo;
+import org.ayo.sample.menu.notify.ToasterDebug;
 
-public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
+public abstract class DemoBaseForViewAnim extends BasePage {
 
     private View mTarget, mTarget2, mTarget3, mTarget4;
     private TextView tv_ease;
@@ -47,10 +49,12 @@ public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.demo_base_for_tween);
+    protected int getLayoutId() {
+        return R.layout.demo_base_for_tween;
+    }
 
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
         mTarget = findViewById(R.id.hello_world);
         mTarget2 = findViewById(R.id.hello_world2);
         mTarget3 = findViewById(R.id.hello_world3);
@@ -91,7 +95,7 @@ public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
         mTarget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                org.ayo.sample.menu.notify.Toaster.toastShort("stop");
+                ToasterDebug.toastShort("stop");
                 stopAnim();
             }
         });
@@ -189,7 +193,7 @@ public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
         findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                org.ayo.sample.menu.notify.Toaster.toastShort("stop");
+                ToasterDebug.toastShort("stop");
                 stopAnim();
             }
         });
@@ -197,7 +201,7 @@ public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
         findViewById(R.id.btn_setting).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                org.ayo.sample.menu.notify.Toaster.toastShort("setting");
+                ToasterDebug.toastShort("setting");
             }
         });
         findViewById(R.id.btn_reset).setOnClickListener(new View.OnClickListener(){
@@ -222,7 +226,7 @@ public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
                 Intent data = new Intent();
                 data.putExtra("anim", animatorInfo);
                 getActivity().setResult(200, data);
-             finish();
+                finish();
             }
         });
 
@@ -286,6 +290,17 @@ public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
             container.addView(v);
         }
     }
+
+    @Override
+    protected void onDestroy2() {
+
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
+    }
+
     private float from, to;
     protected abstract float getMinValue();
     protected abstract float getMaxValue();
@@ -394,7 +409,7 @@ public abstract class DemoBaseForViewAnim extends AyoActivityAttacher {
     protected abstract View createTestView();
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 100 && resultCode == 200){
             int pos = data.hasExtra("pos") ? data.getIntExtra("pos", -1) : -1;

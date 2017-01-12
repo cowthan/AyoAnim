@@ -171,15 +171,15 @@ public class MainActivity extends MainPagerActivity {
             MenuItem menuItem = new MenuItem("普通", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m3.addMenuItem(menuItem);
             {
-                menuItem.addLeaf(new Leaf("平移X", "", DemoTranslateX.class, 1));
-                menuItem.addLeaf(new Leaf("平移Y", "", DemoTranslateY.class, 1));
-                menuItem.addLeaf(new Leaf("缩放", "", DemoScaleXY.class, 1));
-                menuItem.addLeaf(new Leaf("缩放X", "", DemoScaleX.class, 1));
-                menuItem.addLeaf(new Leaf("缩放Y", "", DemoScaleY.class, 1));
-                menuItem.addLeaf(new Leaf("旋转", "", DemoRotate.class, 1));
-                menuItem.addLeaf(new Leaf("旋转X", "", DemoRotateX.class, 1));
-                menuItem.addLeaf(new Leaf("旋转Y", "", DemoRotateY.class, 1));
-                menuItem.addLeaf(new Leaf("透明度", "", DemoAlpha.class, 1));
+                menuItem.addLeaf(new Leaf("平移X", "", DemoTranslateX.class));
+                menuItem.addLeaf(new Leaf("平移Y", "", DemoTranslateY.class));
+                menuItem.addLeaf(new Leaf("缩放", "", DemoScaleXY.class));
+                menuItem.addLeaf(new Leaf("缩放X", "", DemoScaleX.class));
+                menuItem.addLeaf(new Leaf("缩放Y", "", DemoScaleY.class));
+                menuItem.addLeaf(new Leaf("旋转", "", DemoRotate.class));
+                menuItem.addLeaf(new Leaf("旋转X", "", DemoRotateX.class));
+                menuItem.addLeaf(new Leaf("旋转Y", "", DemoRotateY.class));
+                menuItem.addLeaf(new Leaf("透明度", "", DemoAlpha.class));
                 menuItem.addLeaf(new Leaf("动画编辑器", "", AnimatorCreateActivity.class));
                 menuItem.addLeaf(new Leaf("ARGB", "", AnimatorCreateActivity.class));
                 menuItem.addLeaf(new Leaf("Point", "", AnimatorCreateActivity.class));

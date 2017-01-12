@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -9,6 +8,10 @@
 
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/logo</item>
     </style>
 
@@ -17,13 +20,26 @@
         <item name="android:windowAnimationStyle">@style/Animation.Activity.Translucent.Style</item>
     </style>
 
-
-    <style name="SplashTheme" parent="AyoAppTheme">
-        <item name="android:windowBackground">@drawable/logo</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="Animation.Activity.Style" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/base_slide_in_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/base_hold_stand</item>
+        <item name="android:activityCloseEnterAnimation">@anim/base_hold_stand</item>
+        <item name="android:activityCloseExitAnimation">@anim/base_slide_out_to_right</item>
+        <item name="android:taskOpenEnterAnimation">@anim/base_slide_in_from_right</item>
+        <item name="android:taskOpenExitAnimation">@anim/base_hold_stand</item>
+        <item name="android:taskCloseEnterAnimation">@anim/base_hold_stand</item>
+        <item name="android:taskCloseExitAnimation">@anim/base_slide_out_to_right</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/base_slide_in_from_right</item>
+        <item name="android:taskToFrontExitAnimation">@anim/base_hold_stand</item>
+        <item name="android:taskToBackEnterAnimation">@anim/base_hold_stand</item>
+        <item name="android:taskToBackExitAnimation">@anim/base_slide_out_to_right</item>
     </style>
+
+    <style name="Animation.Activity.Translucent.Style" parent="@android:style/Animation.Translucent">
+        <item name="android:windowEnterAnimation">@anim/base_slide_in_from_right</item>
+        <item name="android:windowExitAnimation">@anim/base_slide_out_to_right</item>
+    </style>
+
 
     <style name="ActivityTransitionTheme" parent="Theme.AppCompat.Light.NoActionBar" tools:targetApi="lollipop">
         <item name="android:windowEnterTransition">@transition/explode</item>

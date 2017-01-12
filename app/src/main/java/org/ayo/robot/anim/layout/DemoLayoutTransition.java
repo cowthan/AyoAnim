@@ -3,6 +3,7 @@ package org.ayo.robot.anim.layout;
 import android.animation.LayoutTransition;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
@@ -10,27 +11,29 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.R;
 import org.ayo.robot.anim.demolist.RecyclerHelper;
-import org.ayo.sample.menu.attacher.ActivityAttacher;
-import org.ayo.sample.menu.notify.Toaster;
+import org.ayo.sample.menu.notify.ToasterDebug;
 
 /**
  * Created by Administrator on 2017/1/11 0011.
  */
 
-public class DemoLayoutTransition extends ActivityAttacher {
+public class DemoLayoutTransition extends BasePage {
 
     FrameLayout wrapper;
     RecyclerView recyclerView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.demo_layout_transition);
+    protected int getLayoutId() {
+        return R.layout.demo_layout_transition;
+    }
 
-        wrapper = findViewById(R.id.wrapper);
-        recyclerView = findViewById(R.id.recyclerView);
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
+        wrapper = id(R.id.wrapper);
+        recyclerView = id(R.id.recyclerView);
 
         ObjectAnimator slide_out_to_left = new ObjectAnimator();
         slide_out_to_left.setPropertyName("translationX");
@@ -62,15 +65,15 @@ public class DemoLayoutTransition extends ActivityAttacher {
             @Override
             public void startTransition(LayoutTransition transition, ViewGroup container, View view, int transitionType) {
                 if(transitionType == LayoutTransition.APPEARING){
-                    Toaster.toastShort("APPEARING");
+                    ToasterDebug.toastShort("APPEARING");
                 }else if(transitionType == LayoutTransition.DISAPPEARING){
-                    Toaster.toastShort("DISAPPEARING");
+                    ToasterDebug.toastShort("DISAPPEARING");
                 }else if(transitionType == LayoutTransition.CHANGE_APPEARING){
-                    Toaster.toastShort("CHANGE_APPEARING");
+                    ToasterDebug.toastShort("CHANGE_APPEARING");
                 }else if(transitionType == LayoutTransition.CHANGE_DISAPPEARING){
-                    Toaster.toastShort("CHANGE_DISAPPEARING");
+                    ToasterDebug.toastShort("CHANGE_DISAPPEARING");
                 }else if(transitionType == LayoutTransition.CHANGING){
-                    Toaster.toastShort("CHANGING");
+                    ToasterDebug.toastShort("CHANGING");
                 }
             }
 
@@ -124,6 +127,17 @@ public class DemoLayoutTransition extends ActivityAttacher {
             }
         });
     }
+
+    @Override
+    protected void onDestroy2() {
+        
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
+    }
+
 
     private void clickAddView(){
         if(iv1 != null){

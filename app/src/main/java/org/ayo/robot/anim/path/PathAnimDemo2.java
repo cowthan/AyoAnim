@@ -4,38 +4,24 @@ import android.animation.ValueAnimator;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 
-import org.ayo.robot.anim.AyoActivityAttacher;
+import org.ayo.robot.anim.BasePage;
 import org.ayo.robot.anim.R;
 
 /**
  * Created by Administrator on 2016/12/27.
  */
 
-public class PathAnimDemo2 extends AyoActivityAttacher {
+public class PathAnimDemo2 extends BasePage {
 
     private View ball;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_demo_path_anim2);
-
-        final PathFrameLayout pathLayout = (PathFrameLayout) findViewById(R.id.pathLayout);
-        ball = pathLayout.getChildAt(0);
-
-        pathLayout.setOnPathDrawFinished(new PathFrameLayout.OnPathDrawFinished() {
-            @Override
-            public void onPathCreated(Path path) {
-                startAnim(pathLayout, path);
-            }
-        });
-    }
 
     private static void startAnim(final ViewGroup v, Path path){
         final PathMeasure mPathMeasure = new PathMeasure(path, false);
@@ -76,4 +62,32 @@ public class PathAnimDemo2 extends AyoActivityAttacher {
         v.setLayoutParams(lp);
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.ac_demo_path_anim2;
+    }
+
+    @Override
+    protected void onCreate2(View view, @Nullable Bundle bundle) {
+
+        final PathFrameLayout pathLayout = (PathFrameLayout) findViewById(R.id.pathLayout);
+        ball = pathLayout.getChildAt(0);
+
+        pathLayout.setOnPathDrawFinished(new PathFrameLayout.OnPathDrawFinished() {
+            @Override
+            public void onPathCreated(Path path) {
+                startAnim(pathLayout, path);
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy2() {
+
+    }
+
+    @Override
+    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
+
+    }
 }
