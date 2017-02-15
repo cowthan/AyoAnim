@@ -34,6 +34,7 @@ import org.ayo.robot.anim.svg_vectordrawable.DemoVector;
 import org.ayo.robot.anim.transition.ActivityTransition;
 import org.ayo.robot.anim.transition.DemoTransitionPage1;
 import org.ayo.robot.anim.transition.DemoTransitionPage3;
+import org.ayo.robot.anim.transitioneverywhere.TEMainActivity;
 import org.ayo.robot.anim.viewanim.fade_in;
 import org.ayo.robot.anim.viewanim.fade_out;
 import org.ayo.robot.anim.viewanim.hold;
@@ -180,9 +181,9 @@ public class MainActivity extends MainPagerActivity {
                 menuItem.addLeaf(new Leaf("旋转X", "", DemoRotateX.class));
                 menuItem.addLeaf(new Leaf("旋转Y", "", DemoRotateY.class));
                 menuItem.addLeaf(new Leaf("透明度", "", DemoAlpha.class));
-                menuItem.addLeaf(new Leaf("动画编辑器", "", AnimatorCreateActivity.class));
-                menuItem.addLeaf(new Leaf("ARGB", "", AnimatorCreateActivity.class));
-                menuItem.addLeaf(new Leaf("Point", "", AnimatorCreateActivity.class));
+                menuItem.addLeaf(new Leaf("动画编辑器", "", AnimatorCreateActivity.class, 1));
+                menuItem.addLeaf(new Leaf("ARGB", "", null));
+                menuItem.addLeaf(new Leaf("Point", "", null));
             }
 
             menuItem = new MenuItem("Path动画", R.drawable.weixin_normal, R.drawable.weixin_pressed);
@@ -226,6 +227,7 @@ public class MainActivity extends MainPagerActivity {
                 menuItem.addLeaf(new Leaf("Reveal effect", "", DemoCircularReveal.class));
                 menuItem.addLeaf(new Leaf("Curved motion：曲线运动", "", PathAnimDemo2.class));
                 menuItem.addLeaf(new Leaf("View state changes：视图状态改变", "", DemoStateList.class));
+                menuItem.addLeaf(new Leaf("TransitionEverywhere：第三方库", "", TEMainActivity.class, 1));
             }
         }
 

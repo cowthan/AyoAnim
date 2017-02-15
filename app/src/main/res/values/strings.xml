@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Anim</string>
 
+    <string name="scene">Scene</string>
+    <string name="scene_1">1</string>
+    <string name="scene_2">2</string>
+    <string name="scene_3">3</string>
+    <string name="additional_message">This text fades in.</string>
 
     <string name="example_from_documentation">Example from documentation</string>
     <string name="rotation_only">Rotation only</string>

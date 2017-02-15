@@ -6,12 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import org.ayo.robot.anim.BasePage;
+import org.ayo.component.Master;
+import org.ayo.component.MasterActivity;
 import org.ayo.robot.anim.DemoBase;
 import org.ayo.robot.anim.R;
 import org.ayo.robot.anim.propertyanim.model.AnimatorInfo;
@@ -20,7 +21,9 @@ import org.ayo.sample.menu.notify.ToasterDebug;
 
 import java.util.ArrayList;
 
-public class AnimatorCreateActivity extends BasePage {
+import static android.R.attr.type;
+
+public class AnimatorCreateActivity extends MasterActivity {
 
     private View mTarget,mTarget2;
 
@@ -40,7 +43,28 @@ public class AnimatorCreateActivity extends BasePage {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                DemoBase.startForResult(getActivity(), arrItem[which]);
+                String type = arrItem[which];
+                Class c = null;
+                if(type.equals(AnimatorInfo.TYPE_alpha)){
+                    c = DemoAlpha.class; //.startForResult(a);
+                }else if(type.equals(AnimatorInfo.TYPE_rotate)){
+                    c = DemoRotate.class; //.startForResult(a);
+                }else if(type.equals(AnimatorInfo.TYPE_rotateX)){
+                    c = DemoRotateX.class; //.startForResult(a);
+                }else if(type.equals(AnimatorInfo.TYPE_rotateY)){
+                    c = DemoRotateY.class; //.startForResult(a);
+                }else if(type.equals(AnimatorInfo.TYPE_scaleX)){
+                    c = DemoScaleX.class; //.startForResult(a);
+                }else if(type.equals(AnimatorInfo.TYPE_scaleY)){
+                    c = DemoScaleY.class; //.startForResult(a);
+                }else if(type.equals(AnimatorInfo.TYPE_translateX)){
+                    c = DemoTranslateX.class; //.startForResult(a);
+                }else if(type.equals(AnimatorInfo.TYPE_translateY)){
+                    c = DemoTranslateY.class; //.startForResult(a);
+                }
+
+                Master.startPageForResult(getActivity(), c, null, 205);
+                //DemoBase.startForResult(getActivity(), arrItem[which]);
             }
         });
         builder5.create().show();
@@ -96,6 +120,7 @@ public class AnimatorCreateActivity extends BasePage {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.i("result", "222222");
         if(DemoBase.isMyResult(requestCode)){
             AnimatorInfo a = DemoBase.getResult(data);
             if(a != null){
@@ -107,13 +132,9 @@ public class AnimatorCreateActivity extends BasePage {
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.demo_animator_create;
-    }
-
-    @Override
-    protected void onCreate2(View view, @Nullable Bundle bundle) {
-
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.demo_animator_create);
         mTarget = findViewById(R.id.hello_world);
         mTarget2 = findViewById(R.id.hello_world2);
 
@@ -161,13 +182,9 @@ public class AnimatorCreateActivity extends BasePage {
         });
     }
 
-    @Override
-    protected void onDestroy2() {
-
+    public <T> T id(int id) {
+        return (T) findViewById(id);
     }
 
-    @Override
-    protected void onPageVisibleChanged(boolean b, boolean b1, @Nullable Bundle bundle) {
 
-    }
 }

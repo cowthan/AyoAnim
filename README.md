@@ -1044,6 +1044,9 @@ http://blog.csdn.net/cym492224103/article/details/41677825
 http://www.open-open.com/lib/view/open1416279313977.html
 svg2Path: http://blog.csdn.net/tianjian4592/article/details/44733123/
 
+关于：vectorDrawables.useSupportLibrary = true  
+http://blog.csdn.net/qq_15545283/article/details/51472458
+
 VectorDrawable:
 大体上是这样：
 ```

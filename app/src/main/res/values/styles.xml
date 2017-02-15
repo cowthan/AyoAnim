@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/primary</item>
+        <item name="colorButtonNormal">@color/accent</item>
 
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -18,6 +20,11 @@
     <style name="AppTheme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@style/Animation.Activity.Translucent.Style</item>
+    </style>
+
+    <style name="AppTheme.White">
+        <item name="colorControlHighlight">#88ffffff</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
     <style name="Animation.Activity.Style" parent="@android:style/Animation.Activity">

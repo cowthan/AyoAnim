@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin">8dp</dimen>
     <dimen name="heart_size">48sp</dimen>
+    <dimen name="square_size">50dp</dimen>
 </resources>
